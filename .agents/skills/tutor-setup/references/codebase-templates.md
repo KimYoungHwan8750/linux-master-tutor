@@ -1,70 +1,70 @@
-# Codebase Mode — Templates Reference
+# 코드베이스 모드 — 템플릿 참조
 
-## Vault Folder Structure
+## 볼트 폴더 구조
 
 ```
 StudyVault/
-  00-Dashboard/          # MOC + Quick Reference + Getting Started
-  01-Architecture/       # System overview, request flow, data flow
-  02-<Module1>/          # Per-module notes
-  03-<Module2>/
+  00-Dashboard/          # MOC + 빠른 참조 + 시작 가이드
+  01-Architecture/       # 시스템 개요, 요청 흐름, 데이터 흐름
+  02-<모듈1>/            # 모듈별 노트
+  03-<모듈2>/
   ...
-  NN-DevOps/             # Build, deploy, CI/CD, env config
-  NN+1-Exercises/        # Onboarding exercises
+  NN-DevOps/             # 빌드, 배포, CI/CD, 환경 설정
+  NN+1-Exercises/        # 온보딩 연습
 ```
 
-## Dashboard MOC Template
+## 대시보드 MOC 템플릿
 
 ```markdown
 ---
 module: dashboard
 path: 00-Dashboard
-keywords: MOC, onboarding, architecture, <project-name>
+keywords: MOC, onboarding, architecture, <프로젝트명>
 ---
 
-# <Project Name> — Onboarding Map
+# <프로젝트명> — 온보딩 맵
 
 #dashboard #onboarding
 
-## Architecture Overview
-- Pattern: <architectural pattern>
-- Tech stack: <languages, frameworks, key libraries>
-- → [[System Architecture]]
-- → [[Request Flow]]
+## 아키텍처 개요
+- 패턴: <아키텍처 패턴>
+- 기술 스택: <언어, 프레임워크, 핵심 라이브러리>
+- → [[시스템 아키텍처]]
+- → [[요청 흐름]]
 
-## Module Map
-| Module | Purpose | Key Entry Point | Notes |
-|--------|---------|-----------------|-------|
-| <name> | <1-line purpose> | `<path>` | [[Module Note]] |
+## 모듈 맵
+| 모듈 | 목적 | 핵심 엔트리 포인트 | 노트 |
+|------|------|-------------------|------|
+| <이름> | <1줄 목적> | `<경로>` | [[모듈 노트]] |
 
-## API Surface
-| Method | Path / Command | Module | Notes |
-|--------|---------------|--------|-------|
-| GET | `/endpoint` | <module> | [[API Note]] |
+## API 서피스
+| 메서드 | 경로 / 명령어 | 모듈 | 노트 |
+|--------|-------------|------|------|
+| GET | `/endpoint` | <모듈> | [[API 노트]] |
 
-## Getting Started
-1. Prerequisites: ...
-2. Install: `<install command>`
-3. Configure: copy `.env.example` → `.env`
-4. Run: `<run command>`
-5. Test: `<test command>`
+## 시작 가이드
+1. 사전 요구사항: ...
+2. 설치: `<설치 명령어>`
+3. 설정: `.env.example` → `.env` 복사
+4. 실행: `<실행 명령어>`
+5. 테스트: `<테스트 명령어>`
 
-## Tag Index
-| Tag | Description | Rule |
-|-----|-------------|------|
-| `#arch-*` | Architecture concepts | Top-level pattern tags |
-| `#module-*` | Module-specific | One per module |
+## 태그 인덱스
+| 태그 | 설명 | 규칙 |
+|------|------|------|
+| `#arch-*` | 아키텍처 개념 | 최상위 패턴 태그 |
+| `#module-*` | 모듈 고유 | 모듈당 1개 |
 
-## Onboarding Path
-> Recommended reading order for new developers:
+## 온보딩 경로
+> 신규 개발자 추천 읽기 순서:
 
-1. [[System Architecture]] — big picture
-2. [[Request Flow]] — how a request moves through the system
-3. [[Module A]] → [[Module B]] → ... — module deep dives
-4. [[Exercises]] — hands-on practice
+1. [[시스템 아키텍처]] — 전체 그림
+2. [[요청 흐름]] — 요청이 시스템을 통과하는 방법
+3. [[모듈 A]] → [[모듈 B]] → ... — 모듈 심층 탐구
+4. [[연습]] — 실습
 ```
 
-## Quick Reference Template
+## 빠른 참조 템플릿
 
 ```markdown
 ---
@@ -73,204 +73,204 @@ path: 00-Dashboard
 keywords: quick-reference, commands, setup
 ---
 
-# Quick Reference
+# 빠른 참조
 
 #dashboard #quick-reference
 
-## Key Commands
-| Action | Command |
-|--------|---------|
-| Install deps | `<command>` |
-| Run dev | `<command>` |
-| Run tests | `<command>` |
-| Build | `<command>` |
-| Lint | `<command>` |
+## 핵심 명령어
+| 작업 | 명령어 |
+|------|--------|
+| 의존성 설치 | `<명령어>` |
+| 개발 실행 | `<명령어>` |
+| 테스트 실행 | `<명령어>` |
+| 빌드 | `<명령어>` |
+| 린트 | `<명령어>` |
 
-## Environment Setup
+## 환경 설정
 1. ...
 
-## Important File Locations
-| File / Dir | Purpose |
-|------------|---------|
-| `<path>` | <description> |
+## 주요 파일 위치
+| 파일 / 디렉토리 | 목적 |
+|-----------------|------|
+| `<경로>` | <설명> |
 
-## Common Debugging
-| Symptom | Where to Look | → Note |
-|---------|---------------|--------|
-| <problem> | `<file/log>` | [[Module Note]] |
+## 흔한 디버깅
+| 증상 | 확인 위치 | → 노트 |
+|------|----------|--------|
+| <문제> | `<파일/로그>` | [[모듈 노트]] |
 ```
 
-## Module Note Template
+## 모듈 노트 템플릿
 
 ```markdown
 ---
-module: <module-name>
-path: <relative-path-from-project-root>
-keywords: <3-5 English keywords>
+module: <모듈명>
+path: <프로젝트 루트 기준 상대 경로>
+keywords: <영문 키워드 3~5개>
 ---
 
-# <Module Name> (<Importance: ★~★★★>)
+# <모듈명> (<중요도: ★~★★★>)
 
-#module-<name> #<pattern-tag>
+#module-<name> #<패턴-태그>
 
-## Purpose
-<1-3 sentences: what this module does and why it exists>
+## 목적
+<이 모듈이 하는 일과 존재 이유 1~3문장>
 
-## Key Files
-| File | Role |
+## 핵심 파일
+| 파일 | 역할 |
 |------|------|
-| `<relative-path>` | <description> |
+| `<상대경로>` | <설명> |
 
-## Public Interface
-| Export | Type | Description |
-|--------|------|-------------|
-| `<name>` | function/class/endpoint | <what it does> |
+## 공개 인터페이스
+| 내보내기 | 유형 | 설명 |
+|---------|------|------|
+| `<이름>` | 함수/클래스/엔드포인트 | <하는 일> |
 
-## Internal Flow
+## 내부 흐름
 
 ```text
-<ASCII diagram showing data/control flow within this module>
+<이 모듈 내 데이터/제어 흐름 ASCII 다이어그램>
 ```
 
-## Dependencies
-| Direction | Module / Service | Via |
-|-----------|-----------------|-----|
-| **Uses** | <dependency> | `<import/call>` |
-| **Used by** | <dependent> | `<import/call>` |
+## 의존성
+| 방향 | 모듈 / 서비스 | 경유 |
+|------|-------------|------|
+| **사용** | <의존성> | `<import/call>` |
+| **사용됨** | <의존자> | `<import/call>` |
 
-## Configuration
-| Env Var / Config Key | Purpose | Default |
-|---------------------|---------|---------|
-| `<VAR>` | <description> | `<default>` |
+## 설정
+| 환경 변수 / 설정 키 | 목적 | 기본값 |
+|--------------------|------|--------|
+| `<VAR>` | <설명> | `<기본값>` |
 
-## Testing
-- Run: `<test command for this module>`
-- Pattern: <unit/integration/e2e>
-- Coverage notes: ...
+## 테스트
+- 실행: `<이 모듈 테스트 명령어>`
+- 패턴: <단위/통합/E2E>
+- 커버리지 참고: ...
 
-## Related Notes
-- [[Other Module]]
-- [[Architecture Note]]
+## 관련 노트
+- [[다른 모듈]]
+- [[아키텍처 노트]]
 ```
 
-## API Note Template
+## API 노트 템플릿
 
 ```markdown
 ---
-module: <module-name>
-path: <relative-path>
-keywords: API, <endpoint-keywords>
+module: <모듈명>
+path: <상대경로>
+keywords: API, <엔드포인트 키워드>
 ---
 
-# <Endpoint Group> API
+# <엔드포인트 그룹> API
 
-#api-<group> #module-<name>
+#api-<그룹> #module-<name>
 
-## Endpoints
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| GET | `/path` | required | <description> |
+## 엔드포인트
+| 메서드 | 경로 | 인증 | 설명 |
+|--------|------|------|------|
+| GET | `/path` | 필수 | <설명> |
 
-## Request / Response
+## 요청 / 응답
 
-### <Endpoint Name>
+### <엔드포인트명>
 
-**Request**:
+**요청**:
 ```json
 {
-  "field": "type — description"
+  "field": "타입 — 설명"
 }
 ```
 
-**Response (success)**:
+**응답 (성공)**:
 ```json
 {
-  "field": "type — description"
+  "field": "타입 — 설명"
 }
 ```
 
-**Error cases**:
-| Status | Condition | Response |
-|--------|-----------|----------|
-| 400 | <condition> | `{ "error": "..." }` |
+**에러 케이스**:
+| 상태 | 조건 | 응답 |
+|------|------|------|
+| 400 | <조건> | `{ "error": "..." }` |
 
-## Related Notes
-- [[Module Note]]
-- [[Other API Note]]
+## 관련 노트
+- [[모듈 노트]]
+- [[다른 API 노트]]
 ```
 
-## Onboarding Exercise Template
+## 온보딩 연습 템플릿
 
 ```markdown
 ---
 module: exercises
 path: <NN+1>-Exercises
-keywords: practice, onboarding, <topic>
+keywords: practice, onboarding, <주제>
 ---
 
-# <Topic> — Onboarding Exercises
+# <주제> — 온보딩 연습
 
 #practice #onboarding #module-<name>
 
-## Related Modules
-- [[Module Note 1]]
-- [[Module Note 2]]
+## 관련 모듈
+- [[모듈 노트 1]]
+- [[모듈 노트 2]]
 
 ---
 
-## Exercise 1 — Code Reading [trace]
-> Trace what happens when <specific trigger>. List the files and functions involved in order.
+## 연습 1 — 코드 읽기 [trace]
+> <특정 트리거>가 발생했을 때 무슨 일이 일어나는지 추적하라. 관련 파일과 함수를 순서대로 나열하라.
 
-> [!answer]- View Answer
-> 1. `<file>` → `<function>` — <what happens>
-> 2. `<file>` → `<function>` — <what happens>
+> [!answer]- 정답 보기
+> 1. `<파일>` → `<함수>` — <동작>
+> 2. `<파일>` → `<함수>` — <동작>
 > 3. ...
 
 ---
 
-## Exercise 2 — Configuration [config]
-> How would you change <specific setting>? Which files need modification?
+## 연습 2 — 설정 [config]
+> <특정 설정>을 변경하려면 어떻게 해야 하나? 어떤 파일을 수정해야 하나?
 
-> [!answer]- View Answer
-> - File: `<path>`
-> - Change: <description>
-> - Related env var: `<VAR>`
-
----
-
-## Exercise 3 — Debugging [debug]
-> If <symptom> occurs, where would you look first? Describe your investigation steps.
-
-> [!answer]- View Answer
-> 1. Check `<file/log>` for ...
-> 2. Verify `<config>` is ...
-> 3. Common cause: ...
+> [!answer]- 정답 보기
+> - 파일: `<경로>`
+> - 변경: <설명>
+> - 관련 환경 변수: `<VAR>`
 
 ---
 
-## Exercise 4 — Extension [extend]
-> How would you add <new feature/endpoint>? Describe the files you'd create or modify.
+## 연습 3 — 디버깅 [debug]
+> <증상>이 발생하면 어디를 먼저 확인하겠나? 조사 단계를 설명하라.
 
-> [!answer]- View Answer
-> 1. Create `<path>` — <purpose>
-> 2. Modify `<path>` — <what to add>
-> 3. Add test in `<path>` — <what to test>
-> 4. Register in `<path>` — <wiring>
+> [!answer]- 정답 보기
+> 1. `<파일/로그>` 확인: ...
+> 2. `<설정>` 검증: ...
+> 3. 흔한 원인: ...
+
+---
+
+## 연습 4 — 확장 [extend]
+> <새 기능/엔드포인트>를 추가하려면? 생성하거나 수정할 파일을 설명하라.
+
+> [!answer]- 정답 보기
+> 1. `<경로>` 생성 — <목적>
+> 2. `<경로>` 수정 — <추가할 내용>
+> 3. `<경로>`에 테스트 추가 — <테스트 대상>
+> 4. `<경로>`에 등록 — <연결 설정>
 
 ---
 
 > [!summary]- 학습 포인트 요약
-> | Topic | Key Takeaway |
-> |-------|-------------|
-> | <topic> | <insight> |
+> | 주제 | 핵심 교훈 |
+> |------|----------|
+> | <주제> | <인사이트> |
 ```
 
-## Formatting Rules
+## 서식 규칙
 
-- `[[wiki-links]]` for all cross-references
-- `> [!tip]`, `> [!important]`, `> [!warning]` callouts for key information
-- ASCII diagrams for flows, architecture, and module interactions
-- Tables over prose for structured information
-- **Bold** for critical terms and file paths in descriptions
-- Code blocks with language hints for commands and snippets
-- **Localization**: Fold callout labels (e.g., `View Answer`) should match team language. Korean: `정답 보기`, English: `View Answer`
+- `[[wiki-links]]` 모든 교차 참조
+- `> [!tip]`, `> [!important]`, `> [!warning]` 콜아웃으로 핵심 정보
+- 흐름, 아키텍처, 모듈 상호작용에 ASCII 다이어그램
+- 구조화된 정보는 산문보다 테이블
+- 설명 내 중요 용어와 파일 경로는 **굵게**
+- 명령어와 코드 스니펫에 언어 힌트 포함 코드 블록
+- **현지화**: 접기 콜아웃 라벨은 팀 언어에 맞춤. 한국어: `정답 보기`, 영어: `View Answer`

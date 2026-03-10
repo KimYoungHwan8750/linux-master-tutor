@@ -1,213 +1,213 @@
-# Templates Reference
+# 템플릿 참조
 
-## Vault Folder Structure
+## 볼트 폴더 구조
 
 ```
 StudyVault/
-  00-Dashboard/          # MOC + cheat sheets + Exam Traps
-  01-<Topic1>/           # Concept notes per domain
-  02-<Topic2>/
+  00-Dashboard/          # MOC + 치트시트 + 시험 함정
+  01-<주제1>/            # 도메인별 개념 노트
+  02-<주제2>/
   ...
-  NN-문제풀이/ (or Practice/)
+  NN-문제풀이/           # 연습 문제
 ```
 
-## Dashboard MOC Template
+## 대시보드 MOC 템플릿
 
 ```markdown
 ---
-source_pdf: <list all source files>
-part: <part numbers or "all">
-keywords: MOC, study map, <subject>
+source_pdf: <모든 소스 파일 나열>
+part: <파트 번호 또는 "all">
+keywords: MOC, study map, <과목명>
 ---
 
-# <Subject> Study Map
+# <과목명> 학습 맵
 
-#dashboard #<subject-tag>
+#dashboard #<과목-태그>
 
-## Overview
-- Exam/certification info (if applicable)
-- Domain weights or topic importance
+## 개요
+- 시험/자격증 정보 (해당 시)
+- 도메인 가중치 또는 주제 중요도
 
-## Topic Map
-| Section | Source | Notes | Status |
-|---------|--------|-------|--------|
-| Topic 1 | Part 1 | [[Note 1]], [[Note 2]] | [ ] |
+## 주제 맵
+| 섹션 | 소스 | 노트 | 상태 |
+|------|------|------|------|
+| 주제 1 | Part 1 | [[노트 1]], [[노트 2]] | [ ] |
 
-## Practice Notes
+## 연습 노트
 | 문제셋 | 문항 수 | 링크 |
 |--------|---------|------|
-| Topic 1 | N문제 | [[Topic 1 Practice]] |
+| 주제 1 | N문제 | [[주제 1 Practice]] |
 
-## Study Tools
+## 학습 도구
 | 도구 | 설명 | 링크 |
 |------|------|------|
-| Exam Traps | 시험 함정/오답 포인트 모음 | [[Exam Traps]] |
-| Quick Reference | 전체 치트시트 | [[빠른 참조]] |
+| 시험 함정 | 시험 함정/오답 포인트 모음 | [[Exam Traps]] |
+| 빠른 참조 | 전체 치트시트 | [[빠른 참조]] |
 
-## Tag Index
-| Tag | 관련 주제 | 규칙 |
-|-----|-----------|------|
-| `#tag-name` | Brief description | 상위/도메인/세부/기법/유형 |
+## 태그 인덱스
+| 태그 | 관련 주제 | 규칙 |
+|------|-----------|------|
+| `#tag-name` | 간략 설명 | 상위/도메인/세부/기법/유형 |
 
-> **태그 규칙**: <1-line summary of hierarchy rule>
+> **태그 규칙**: <계층 규칙 1줄 요약>
 
-## Weak Areas
-- [ ] Area needing review → [[Relevant Note]] → [[Exam Traps]]
+## 취약 영역
+- [ ] 복습 필요 영역 → [[관련 노트]] → [[Exam Traps]]
 
-## Non-core Topic Policy
-| Source | Content | Handling |
-|--------|---------|----------|
-| <file> | <description> | **Excluded** — reason |
+## 비핵심 주제 정책
+| 소스 | 내용 | 처리 |
+|------|------|------|
+| <파일> | <설명> | **제외** — 사유 |
 ```
 
-## Quick Reference Template
+## 빠른 참조 템플릿
 
-- **Every section heading MUST include `→ [[Concept Note]]` link**
-- One-line summary table per concept/term
-- Grouped by category
-- All key formulas and condition expressions
-- "Must-know formulas/patterns" section at bottom with `→ [[Note]]` links
+- **모든 섹션 헤딩에 반드시 `→ [[개념 노트]]` 링크 포함**
+- 개념/용어별 한 줄 요약 표
+- 카테고리별 그룹핑
+- 모든 핵심 공식 및 조건식
+- 하단에 "필수 공식/패턴" 섹션 + `→ [[노트]]` 링크
 
-## Exam Traps Template
+## 시험 함정 템플릿
 
 ```markdown
 ---
 keywords: exam traps, weak areas, common mistakes
 ---
 
-# Exam Traps (시험 함정 포인트)
+# 시험 함정 포인트
 
 #dashboard #exam-traps
 
 > [!warning] 이 노트의 목적
 > 시험에서 자주 틀리거나 헷갈리는 포인트만 모은 **오답/함정 노트**입니다.
 
-## <Topic 1>
+## <주제 1>
 
-> [!danger]- Trap: <Short description>
-> - <What the trap is>
-> - <Why it's confusing>
-> - <The correct answer/approach>
-> - [[Related Concept Note]]
+> [!danger]- 함정: <간단한 설명>
+> - <함정 내용>
+> - <헷갈리는 이유>
+> - <올바른 정답/접근법>
+> - [[관련 개념 노트]]
 
 ---
 
-## Related
-- [[MOC - <Subject>]] → Weak Areas 섹션
+## 관련
+- [[MOC - <과목명>]] → 취약 영역 섹션
 - [[빠른 참조]]
 ```
 
-## Concept Note Template
+## 개념 노트 템플릿
 
 ```markdown
 ---
-source_pdf: <filename.pdf — MUST match verified Phase 1 mapping>
-part: <part number>
-keywords: <3-5 English keywords>
+source_pdf: <파일명.pdf — Phase D1 매핑과 반드시 일치>
+part: <파트 번호>
+keywords: <영문 키워드 3~5개>
 ---
 
-# <Title> (<Importance: ★~★★★>)
+# <제목> (<중요도: ★~★★★>)
 
-#<tag-from-registry> #<tag-from-registry>
+#<레지스트리-태그> #<레지스트리-태그>
 
-## Overview Table (한눈에 비교)
-| Item | Key Point |
-|------|-----------|
-| A    | ...       |
+## 한눈에 비교
+| 항목 | 핵심 포인트 |
+|------|------------|
+| A    | ...        |
 
-## <Concept 1>
-Concise explanation (3-5 lines max).
-- Bullet points for key facts
-- Use **bold** for critical terms
+## <개념 1>
+간결한 설명 (3~5줄 이내).
+- 핵심 사실 불릿 포인트
+- 중요 용어는 **굵게**
 
 ---
 
-## Exam/Test Patterns (시험 빈출 패턴)
-| Scenario/Keyword | Answer |
-|-------------------|--------|
-| "keyword X" | **Solution Y** |
+## 시험 빈출 패턴
+| 시나리오/키워드 | 정답 |
+|----------------|------|
+| "키워드 X" | **해법 Y** |
 
-## Related Notes
-- [[Other Note 1]]
+## 관련 노트
+- [[다른 노트 1]]
 ```
 
-### Formatting Rules
+### 서식 규칙
 
-- `[[wiki-links]]` for cross-references
-- `> [!tip]`, `> [!important]`, `> [!warning]` callouts
-- Comparison tables over prose; bold for key vocabulary
+- `[[wiki-links]]` 교차 참조
+- `> [!tip]`, `> [!important]`, `> [!warning]` 콜아웃
+- 산문보다 비교표; 핵심 용어 굵게
 
-### Visualization Rule
+### 시각화 규칙
 
-Include ASCII diagrams when applicable:
-- Processes/stages → timeline or sequence diagram
-- Signal/data flow → flow DAG
-- Strategy comparisons → quantitative table
-- State-based behavior → state transition diagram
+해당되는 경우 ASCII 다이어그램 포함:
+- 프로세스/단계 → 타임라인 또는 시퀀스 다이어그램
+- 신호/데이터 흐름 → 플로우 DAG
+- 전략 비교 → 정량 비교표
+- 상태 기반 동작 → 상태 전이 다이어그램
 
-### Simplification-with-Exceptions Rule
+### 단순화-예외 규칙
 
-General statements must check for edge cases — add `> [!warning]` or link to exception details.
+일반 서술에는 반드시 예외 사항 확인 — `> [!warning]` 추가하거나 예외 상세 링크.
 
-## Practice Question Template
+## 연습 문제 템플릿
 
 ```markdown
 ---
-source_pdf: <filename.pdf — MUST match verified Phase 1 mapping>
-part: <part number>
-keywords: practice, <topic keywords>
+source_pdf: <파일명.pdf — Phase D1 매핑과 반드시 일치>
+part: <파트 번호>
+keywords: practice, <주제 키워드>
 ---
 
-# <Topic> Practice (N questions)
+# <주제> Practice (N문제)
 
-#practice #<topic-tag>
+#practice #<주제-태그>
 
-## Related Concepts
-- [[Concept Note 1]]
+## 관련 개념
+- [[개념 노트 1]]
 
 > [!hint]- 핵심 패턴 (클릭하여 보기)
-> | Keyword | Answer |
-> |---------|--------|
-> | pattern 1 | **Solution** |
+> | 키워드 | 정답 |
+> |--------|------|
+> | 패턴 1 | **해법** |
 
 ---
 
-## Question 1 - <Short Label> [recall]
-> Scenario summary in one line
+## 문제 1 - <짧은 라벨> [recall]
+> 시나리오 한 줄 요약
 
 > [!answer]- 정답 보기
-> Answer text here with explanation.
+> 정답 텍스트와 설명.
 
 ---
 
-## Question 2 - <Short Label> [application]
-> Given this scenario, what would you do?
+## 문제 2 - <짧은 라벨> [application]
+> 이 시나리오에서 어떻게 하겠는가?
 
 > [!answer]- 정답 보기
-> Answer with applied reasoning.
+> 응용 추론이 포함된 답변.
 
 ---
 
-## Question 3 - <Short Label> [analysis]
-> Compare X and Y in this context. Which is better and why?
+## 문제 3 - <짧은 라벨> [analysis]
+> 이 맥락에서 X와 Y를 비교하라. 어느 것이 더 적합하고 왜?
 
 > [!answer]- 정답 보기
-> Comparative analysis answer.
+> 비교 분석 답변.
 
 ---
 
 > [!summary]- 패턴 요약 (클릭하여 보기)
-> | Keyword | Answer |
-> |---------|--------|
+> | 키워드 | 정답 |
+> |--------|------|
 > | ... | ... |
 ```
 
-### Practice Question Rules
+### 연습 문제 규칙
 
-- Every topic folder MUST have a practice file (8+ questions)
-- **Answer hiding**: ALL answers use `> [!answer]- 정답 보기` fold callout
-- **Patterns**: `> [!hint]-` / `> [!summary]-` fold callouts (MANDATORY)
-- **Question type diversity**: tag `[recall]`, `[application]`, `[analysis]` in heading
-  - ≥60% recall, ≥20% application, ≥2 analysis per file
-- Scenario in one `>` blockquote line; answer 1-3 lines in fold
-- `## Related Concepts` with `[[wiki-links]]` (MANDATORY)
+- 모든 주제 폴더에 연습 파일 필수 (8문제 이상)
+- **답안 숨김**: 모든 답안은 `> [!answer]- 정답 보기` 접기 콜아웃 — 바로 보이면 안 됨
+- **패턴**: `> [!hint]-` 접기; 패턴 요약: `> [!summary]-` 접기 (필수)
+- **문제 유형 다양성**: 헤딩에 `[recall]`, `[application]`, `[analysis]` 태그
+  - ≥60% recall, ≥20% application, ≥2 analysis (파일당)
+- 시나리오 `>` 블록인용 한 줄; 답안 1~3줄 접기
+- `## 관련 개념`에 `[[wiki-links]]` (필수)

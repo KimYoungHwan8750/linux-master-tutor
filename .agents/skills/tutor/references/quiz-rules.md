@@ -1,56 +1,103 @@
-# Quiz Design Rules
+# 퀴즈 설계 규칙
 
-## Zero-Hint Policy (CRITICAL)
+## 무힌트 정책 (절대 원칙)
 
-Every question must be answerable ONLY by someone who actually knows the material.
+모든 문제는 해당 내용을 **실제로 아는 사람만** 맞출 수 있어야 한다.
 
-1. **Option descriptions**: NEVER reveal correctness
-   - BAD: `label: "stderr"`, `description: "Error output stream used by Cloud Run for error classification"`
-   - GOOD: `label: "stderr"`, `description: "Standard error stream"`
+1. **선택지 설명**: 절대 정답 여부를 드러내지 않는다
+   - ❌ 나쁜 예: `label: "stderr"`, `description: "Cloud Run이 에러 분류에 사용하는 에러 출력 스트림"`
+   - ✅ 좋은 예: `label: "stderr"`, `description: "표준 에러 스트림"`
 
-2. **No "(Recommended)" tag** on any option
+2. **"(추천)"** 태그 어떤 옵션에도 절대 사용 금지
 
-3. **Randomize** correct answer position — never always first or last
+3. **정답 위치 무작위** — 항상 첫 번째나 마지막에만 두지 않는다
 
-4. **Question phrasing**: Ask about behavior/purpose/output, don't hint at the answer
-   - BAD: "Which error stream does error() use?"
-   - GOOD: "Where does error() method output go?"
+4. **문제 표현**: 행동/목적/출력을 묻되, 답을 암시하지 않는다
+   - ❌ 나쁜 예: "어떤 에러 스트림을 error()가 사용하는가?"
+   - ✅ 좋은 예: "error() 메서드의 출력은 어디로 향하는가?"
 
-5. **Plausible distractors**: Wrong options must be real concepts from the domain, representing common misconceptions
+5. **그럴듯한 오답**: 오답은 해당 도메인의 실제 개념이어야 하며, 흔한 오해를 반영해야 한다
 
-## Question Types
+## 문제 유형
 
-1. **Factual recall**: "What HTTP status code is returned when...?"
-2. **Conceptual understanding**: "Why does the system use X pattern?"
-3. **Behavioral prediction**: "What happens when X fails?"
-4. **Comparison/distinction**: "What is the difference between X and Y?"
-5. **Debugging scenario**: "Given this error, what is the most likely cause?"
+1. **사실 기억**: "~할 때 사용하는 명령어는?"
+2. **개념 이해**: "이 설정이 필요한 이유는?"
+3. **동작 예측**: "이 명령어를 실행하면 어떤 결과가 나오는가?"
+4. **비교/구분**: "X와 Y의 차이점은?"
+5. **디버깅 시나리오**: "이 에러가 발생했을 때 가장 가능성 높은 원인은?"
+6. **명령어 실전**: "다음 결과를 얻기 위한 올바른 명령어 조합은?"
+7. **옵션/플래그**: "이 명령어에서 -r 옵션의 의미는?"
+8. **설정값/경로**: "이 설정 파일의 올바른 경로는?"
 
-## Difficulty Balancing
+## 난이도 배분
 
-- Diagnostic: easy 40%, medium 40%, hard 20%
-- Weak-area drill: medium 30%, hard 70%
-- Review: all levels evenly
+| 세션 유형 | 쉬움 | 보통 | 어려움 |
+|-----------|------|------|--------|
+| 진단 | 40% | 40% | 20% |
+| 전체 학습 | 20% | 50% | 30% |
+| 약점 드릴 | 0% | 30% | 70% |
+| 커버리지 스윕 | 20% | 50% | 30% |
+| 복습 | 균등 | 균등 | 균등 |
 
-## Drilling Unresolved Concepts
+## 미해결 개념(🔴) 드릴 규칙
 
-When targeting 🔴 concepts from concept files:
-- Do NOT repeat the exact same question — rephrase in a new context
-- Test the same underlying knowledge from a different angle
-- E.g., if user confused "400 vs 422", ask a scenario question where they must choose the correct status code for a new situation
+🔴 개념 재출제 시:
+- **완전히 같은 문제 반복 금지** — 새로운 맥락에서 재구성
+- 같은 기저 지식을 **다른 각도**에서 테스트
+- 예: "chmod와 chown 혼동" → 새 시나리오에서 올바른 명령어 선택 문제로
 
-## AskUserQuestion Format
+## AskUserQuestion 형식
 
-- 4 questions per round, 4 options each, single-select
-- Header: max 12 chars, "Q1. Topic"
+- 배치당 4문제, 4옵션, 단일선택
+- Header: 최대 12자, "Q{n}. 주제"
+- Description: 중립적, 힌트 없음
 
-## File Update Protocol
+## 멀티배치 프로토콜
 
-After grading:
-1. Update `concepts/{area}.md` — add/update concept rows + error notes
-2. Update dashboard — recalculate area stats from concept files
-3. Badges: 🟥 0-39% · 🟨 40-69% · 🟩 70-89% · 🟦 90-100% · ⬜ no data
+세션의 전체 문제를 한 번에 출제하지 않고, 4문제씩 배치로 나눠 진행:
 
-## Language Rule
+1. 세션의 총 문제 수를 먼저 결정
+2. 4문제씩 배치로 분할
+3. 각 배치: AskUserQuestion → 채점 → 오답 간략 설명 → 진행 표시
+4. **배치 간 자동 진행** — 사용자에게 "계속할까요?" 묻지 않는다
+5. 모든 배치 완료 후 Phase 5(종합 결과)로 이동
 
-All file content and output in the user's detected language. Badge emojis are universal.
+**배치 간 진행 표시 형식**:
+```
+━━━ 📊 배치 {현재}/{총} 완료 | 정답률 {n}% ({정답}/{전체}) | 남은 문제: {n}개 ━━━
+```
+
+## 커버리지 우선 문제 선택
+
+문제 출제 시 개념 선택 우선순위:
+
+1. **인벤토리 미테스트** (`[ ]`) 개념 → 최우선 (커버리지 확대)
+2. **🔴 미해결 개념** → 차순위 (약점 보강)
+3. **🟢 해결됨 + 오래된 개념** → 최후순위 (복습)
+
+**한 세션에서 같은 개념 중복 출제 금지.**
+
+## 포괄적 개념 추출 규칙
+
+학습 노트에서 개념 추출 시 누락 방지:
+
+- 표(table)의 **모든 행**을 개별 개념으로 카운트
+- 비교표는 **비교 대상 각각**을 개별 개념으로
+- 명령어 목록은 **각 명령어**를 개별 개념으로
+- 옵션/플래그 목록은 **각 옵션**을 개별 개념으로
+- 설정 파일 목록은 **각 파일/경로**를 개별 개념으로
+- 프로세스/절차의 **각 단계**를 개별 개념으로
+- `> [!tip]`, `> [!warning]` 등 콜아웃 내용을 개별 개념으로
+- **굵은 글씨**로 강조된 핵심 용어를 개별 개념으로
+
+## 파일 업데이트 프로토콜
+
+채점 후 반드시 순서대로:
+1. `concepts/{영역}.md` — 개념 행 추가/갱신 + 오답 메모
+2. `inventory/concept-inventory.md` — 테스트된 개념 `[x]` 체크 + 통계 갱신
+3. 대시보드 — 영역별 통계 재계산 + 커버리지 갱신
+4. 뱃지: 🟥 0-39% · 🟨 40-69% · 🟩 70-89% · 🟦 90-100% · ⬜ 미측정
+
+## 언어 규칙
+
+모든 파일 내용과 출력을 사용자 감지 언어로 작성. 뱃지 이모지는 범용.

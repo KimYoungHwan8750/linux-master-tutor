@@ -9,158 +9,285 @@ description: >
   or says things like "quiz me", "test me", "let's study", "/tutor", "학습", "퀴즈", "평가".
 ---
 
-# Tutor Skill
+# 튜터 스킬
 
-Quiz-based tutor that tracks what the user knows and doesn't know at the **concept level**. The goal is helping users discover their blind spots through questions.
+컨셉 레벨 메타인지 추적 기반 퀴즈 튜터. **학습 자료의 모든 내용을 빠짐없이** 다루는 것이 핵심 목표.
 
-## File Structure
+## 핵심 원칙: 완전 커버리지
+
+> **절대 원칙**: 학습 자료의 모든 개념을 빠짐없이 테스트한다.
+> 한 세션에서 4문제만 내고 끝내지 않는다.
+> 선택한 범위의 모든 개념을 커버할 때까지 배치(4문제씩)를 반복한다.
+
+## 파일 구조
 
 ```
 StudyVault/
-├── *dashboard*              ← Compact overview: proficiency table + stats
-└── concepts/
-    ├── {area-name}.md       ← Per-area concept tracking (attempts, status, error notes)
-    └── ...
+├── *dashboard*              ← 요약 대시보드: 숙련도 + 통계 + 커버리지
+├── concepts/
+│   ├── {영역명}.md           ← 영역별 개념 추적 (시도횟수, 상태, 오답메모)
+│   └── ...
+└── inventory/
+    └── concept-inventory.md  ← 전체 개념 목록 (학습자료에서 자동 추출)
 ```
 
-- **Dashboard**: Only aggregated numbers. Links to concept files. Stays small forever.
-- **Concept files**: One per area. Tracks each concept with attempts, correct count, date, status, and error notes. Grows proportionally to unique concepts tested (bounded).
+- **대시보드**: 집약 수치만. 개념 파일 링크. 항상 간결 유지.
+- **개념 파일**: 영역별 1개. 시도횟수, 정답수, 날짜, 상태, 오답메모 추적.
+- **개념 인벤토리**: 학습자료에서 추출한 전체 개념 목록. 커버리지 계산의 기준.
 
-## Workflow
+## 워크플로우
 
-### Phase 0: Detect Language
+### Phase 0: 언어 감지
 
-Detect user's language from their message → `{LANG}`. All output and file content in `{LANG}`.
+사용자 메시지에서 언어 감지 → `{LANG}`. 모든 출력과 파일 내용을 `{LANG}`으로 작성.
 
-### Phase 1: Discover Vault
+### Phase 1: 볼트 탐색
 
-1. Glob `**/StudyVault/` in project
-2. List section directories
-3. Glob `**/StudyVault/*dashboard*` to find dashboard
-4. If found, read it. Preserve existing file path regardless of language.
-5. If not found, create from template (see Dashboard Template below)
+1. 프로젝트에서 `**/StudyVault/` Glob
+2. 섹션 디렉토리 목록 확인
+3. `**/StudyVault/*dashboard*` 또는 `**/StudyVault/**/*dashboard*` Glob으로 대시보드 찾기
+4. 찾으면 읽기. 기존 파일 경로 그대로 유지.
+5. 없으면 템플릿에서 생성 (아래 대시보드 템플릿 참조)
 
-If no StudyVault exists, inform user and stop.
+StudyVault가 없으면 사용자에게 알리고 중단.
 
-### Phase 2: Ask Session Type
+### Phase 1.5: 개념 인벤토리 구축 (핵심 신규 단계)
 
-**MANDATORY**: Use AskUserQuestion to let the user choose what to do. Analyze the dashboard to build context-aware options, then present them.
+> **매 세션 시작 시 반드시 수행.** 인벤토리가 이미 있으면 읽기만 하고, 없거나 학습자료가 변경되었으면 재구축.
 
-Read the dashboard proficiency table and build options based on current state:
+1. 모든 섹션 디렉토리의 학습 노트를 읽는다 (Practice 파일 제외)
+2. 각 노트에서 **테스트 가능한 개념**을 빠짐없이 추출한다:
+   - `##` 이상 헤딩 = 개념 카테고리
+   - **표(table)의 각 행** = 개별 개념 (명령어, 옵션, 설정값, 비교 항목 등)
+   - **콜아웃** (`> [!tip]`, `> [!important]`, `> [!warning]`) = 중요 개념
+   - **비교표의 각 항목** = 개별 비교 개념
+   - **시험 빈출 패턴의 각 행** = 개별 개념
+   - **글머리 기호(bullet)로 나열된 항목들** = 개별 개념
+   - **굵은 글씨(bold)로 강조된 용어** = 핵심 개념
+3. `inventory/concept-inventory.md`에 기록 (형식은 아래 인벤토리 템플릿 참조)
+4. 이미 `concepts/` 파일에 기록된 개념은 `[x]`로 체크
+5. 인벤토리의 미체크(`[ ]`) 항목 = 향후 퀴즈 우선 대상
 
-1. If unmeasured areas (⬜) exist → include "Diagnostic" option targeting those areas
-2. If weak areas (🟥/🟨) exist → include "Drill weak areas" option naming the weakest area(s)
-3. Always include "Choose a section" option so the user can pick any area
-4. If all areas are 🟩/🟦 → include "Hard-mode review" option
+### Phase 2: 세션 유형 선택
 
-Present these as an AskUserQuestion with header "Session" and concise descriptions showing which areas each option targets. The user MUST select before proceeding.
+**필수**: AskUserQuestion으로 사용자에게 세션 유형을 선택받는다. 대시보드와 인벤토리를 분석하여 맥락 기반 옵션 구성.
 
-### Phase 3: Build Questions
+대시보드 숙련도 + 인벤토리 커버리지를 읽고 다음 중 해당하는 옵션을 동적으로 구성:
 
-1. Read markdown files in target section(s)
-2. If drilling weak area: also read `concepts/{area}.md` to find 🔴 unresolved concepts — rephrase these in new contexts (don't repeat the same question)
-3. Craft exactly 4 questions following `references/quiz-rules.md`
+1. **전체 학습**: 선택한 섹션의 **모든 개념**을 순차적으로 퀴즈
+   - 설명에 구체적 수치 표시: "파일시스템 — 45개 개념 중 33개 미학습 (커버리지 27%)"
+2. **커버리지 스윕**: 여러 섹션에서 미테스트 개념만 골라 퀴즈 (10~20문제)
+   - "전체 218개 미테스트 개념 중 무작위 선별"
+3. **약점 드릴**: 🔴 미해결 개념 집중 재테스트 (🔴이 있을 때만 표시)
+   - "파일시스템 5개, 셸 3개 미해결 개념"
+4. **진단 평가**: 미측정 영역(⬜) 초기 진단 (⬜가 있을 때만 표시)
+5. **섹션 선택**: 특정 섹션 자유 선택
 
-**CRITICAL**: Read `references/quiz-rules.md` before crafting ANY question. Zero hints allowed.
+각 옵션에 **구체적 수치**(개념 수, 커버리지 %)를 표시하여 진행 상황을 명확히 전달.
 
-### Phase 4: Present Quiz
+사용자가 선택하기 전까지 진행하지 않는다.
 
-Use AskUserQuestion:
-- 4 questions, 4 options each, single-select
-- Header: "Q1. Topic" (max 12 chars)
-- Descriptions: neutral, no hints
+### Phase 3: 문제 작성
 
-### Phase 5: Grade & Explain
+1. 대상 섹션의 마크다운 파일 읽기
+2. 세션 유형에 따른 문제 선택:
+   - **전체 학습**: 인벤토리 목록 순서대로 해당 섹션의 모든 미테스트 개념에서 출제
+   - **커버리지 스윕**: 인벤토리에서 미테스트(`[ ]`) 개념만 선별 (여러 섹션 혼합)
+   - **약점 드릴**: `concepts/{영역}.md`에서 🔴 개념 → 새 맥락으로 재구성
+   - **진단**: 영역 전반에서 난이도 균형 맞춰 출제
+3. `references/quiz-rules.md` 반드시 읽고 문제 작성
 
-1. Show results table (question / correct answer / user answer / result)
-2. Wrong answers: concise explanation
-3. Map each question to its area
+**문제 수 결정**:
+| 세션 유형 | 문제 수 |
+|-----------|---------|
+| 전체 학습 | 해당 섹션 미테스트 개념 전부 (최소 8) |
+| 커버리지 스윕 | 10~20문제 |
+| 약점 드릴 | 🔴 개념 수 × 1~2 (최소 4) |
+| 진단 | 8문제 |
 
-### Phase 6: Update Files
+**절대 규칙**: `references/quiz-rules.md`를 읽지 않고 문제를 만들지 않는다. 힌트 절대 금지.
 
-#### 1. Update concept file (`concepts/{area}.md`)
+### Phase 4: 멀티배치 퀴즈 진행
 
-For each question answered:
-- **New concept**: Add row to table + if wrong, add error note under `### 오답 메모` (or localized equivalent)
-- **Existing 🔴 concept answered correctly**: Increment attempts & correct, change status to 🟢, keep error note (learning history)
-- **Existing 🟢 concept answered wrong again**: Increment attempts, change status back to 🔴, update error note
+> **핵심 메커니즘**: 4문제를 1배치로, 전체 문제를 소진할 때까지 반복한다.
 
-Table format:
-```markdown
-| Concept | Attempts | Correct | Last Tested | Status |
-|---------|----------|---------|-------------|--------|
-| concept name | 2 | 1 | 2026-02-24 | 🔴 |
+**배치 루프 프로토콜**:
+
+```
+총 N개 문제:
+  배치 1: Q1~Q4 → AskUserQuestion → 채점 → 오답 설명
+  배치 2: Q5~Q8 → AskUserQuestion → 채점 → 오답 설명
+  ...
+  배치 K: 남은 문제 → AskUserQuestion → 채점 → 오답 설명
+
+  → Phase 5: 전체 결과 요약
 ```
 
-Error notes format (only for wrong answers):
-```markdown
-### Error Notes
+각 배치:
+1. AskUserQuestion으로 4문제 제시 (4옵션, 단일선택)
+2. Header: "Q{n}. 주제" (최대 12자)
+3. 설명(description)은 중립적, 힌트 없음
+4. 채점 후 오답에 대한 간결한 설명
+5. **배치 간 진행 표시** 후 즉시 다음 배치 진행 (사용자 확인 불필요):
 
-**concept name**
-- Confusion: what the user mixed up
-- Key point: the correct understanding
+```
+━━━ 📊 배치 3/8 완료 | 현재 정답률 75% (12/16) | 남은 문제: 16개 ━━━
 ```
 
-#### 2. Update dashboard
+마지막 배치가 4문제 미만이면 남은 문제만 제시.
 
-- Recalculate per-area stats from concept files (sum attempts/correct across all concepts in that area)
-- Update proficiency badges: 🟥 0-39% · 🟨 40-69% · 🟩 70-89% · 🟦 90-100% · ⬜ no data
-- Update stats: total questions, cumulative rate, unresolved/resolved counts, weakest/strongest
+### Phase 5: 전체 결과 요약
 
-Dashboard stays compact — no session logs, no per-question details.
+모든 배치 완료 후 종합 보고:
 
-## Dashboard Template
+1. **종합 결과 테이블**:
+```markdown
+| # | 문제 | 정답 | 내 답 | 결과 |
+|---|------|------|-------|------|
+| 1 | inode 구조에서... | A | A | ✅ |
+| 2 | chmod 777의... | B | C | ❌ |
+| ... | ... | ... | ... | ... |
+```
 
-Create when no dashboard exists. Filename localized to `{LANG}`. Example in English:
+2. **영역별 분석**:
+```markdown
+| 영역 | 문항수 | 정답 | 정답률 | 레벨 변화 |
+|------|--------|------|--------|----------|
+| 파일시스템 | 15 | 12 | 80% | ⬜→🟩 |
+```
+
+3. **오답 개념 종합**: 모든 틀린 문제에 대한 간결한 핵심 설명
+4. **커버리지 변화**: "이번 세션으로 파일시스템 커버리지 27% → 100% (+33개 개념)"
+
+### Phase 6: 파일 업데이트
+
+**채점 후 반드시 세 파일 모두 업데이트한다.**
+
+#### 1. 개념 파일 (`concepts/{영역}.md`)
+
+각 문제의 개념에 대해:
+- **새 개념**: 테이블에 행 추가 + 오답이면 `### 오답 메모`에 기록
+- **기존 🔴 개념 → 정답**: 시도/정답 증가, 상태 🟢로, 오답 메모는 유지 (학습 이력)
+- **기존 🟢 개념 → 오답**: 시도 증가, 상태 🔴로, 오답 메모 갱신
+
+테이블 형식:
+```markdown
+| 개념 | 시도 | 정답 | 최종 테스트 | 상태 |
+|------|------|------|------------|------|
+| inode 구조 | 2 | 1 | 2026-03-10 | 🔴 |
+```
+
+오답 메모 형식:
+```markdown
+### 오답 메모
+
+**inode 구조**
+- 혼동: 사용자가 혼동한 내용
+- 핵심: 올바른 이해
+```
+
+#### 2. 인벤토리 (`inventory/concept-inventory.md`)
+
+- 테스트된 개념: `[ ]` → `[x]` 체크
+- 섹션별 통계 테이블(총 개념, 테스트됨, 미테스트, 커버리지) 재계산
+
+#### 3. 대시보드
+
+- 개념 파일에서 영역별 통계 재계산 (정답/오답/정답률)
+- 숙련도 뱃지 갱신: 🟥 0-39% · 🟨 40-69% · 🟩 70-89% · 🟦 90-100% · ⬜ 미측정
+- 커버리지 열 갱신: 테스트된 개념 수 / 총 개념 수
+- 통계 갱신: 총 문항수, 누적 정답률, 미해결/해결 개수, 최약/최강 영역, 전체 커버리지 %
+
+대시보드는 항상 간결하게 유지 — 세션 로그나 개별 문제 기록 없음.
+
+## 대시보드 템플릿
+
+대시보드가 없을 때 생성. 파일명은 `{LANG}`으로 현지화:
 
 ```markdown
-# Learning Dashboard
+# 학습 대시보드
 
-> Concept-based metacognition tracking. See linked files for details.
+> 개념 기반 메타인지 추적. 상세 내용은 링크된 파일 참조.
 
 ---
 
-## Proficiency by Area
+## 영역별 숙련도
 
-| Area | Correct | Wrong | Rate | Level | Details |
-|------|---------|-------|------|-------|---------|
-(one row per section, last column = [[concepts/{area}]] link)
-| **Total** | **0** | **0** | **-** | ⬜ Unmeasured | |
+| 영역 | 정답 | 오답 | 정답률 | 레벨 | 커버리지 | 상세 |
+|------|------|------|--------|------|---------|------|
+(섹션별 1행, 마지막 열 = [[concepts/{영역}]] 링크)
+| **합계** | **0** | **0** | **-** | ⬜ 미측정 | 0% | |
 
-> 🟥 Weak (0-39%) · 🟨 Fair (40-69%) · 🟩 Good (70-89%) · 🟦 Mastered (90-100%) · ⬜ Unmeasured
+> 🟥 취약 (0-39%) · 🟨 보통 (40-69%) · 🟩 양호 (70-89%) · 🟦 마스터 (90-100%) · ⬜ 미측정
 
 ---
 
-## Stats
+## 통계
 
-- **Total Questions**: 0
-- **Cumulative Rate**: -
-- **Unresolved Concepts**: 0
-- **Resolved Concepts**: 0
-- **Weakest Area**: -
-- **Strongest Area**: -
+- **총 문항수**: 0
+- **누적 정답률**: -
+- **미해결 개념**: 0
+- **해결 개념**: 0
+- **최약 영역**: -
+- **최강 영역**: -
+- **전체 커버리지**: 0/0 (0%)
+
+---
+
+## 커버리지 진행
+
+| 영역 | 총 개념 | 테스트됨 | 커버리지 | 진행 |
+|------|---------|---------|---------|------|
+(섹션별 1행)
+
+> 상세 인벤토리: [[inventory/concept-inventory]]
 ```
 
-## Concept File Template
-
-Create per area when first question is asked. Example:
+## 인벤토리 템플릿
 
 ```markdown
-# {Area Name} — Concept Tracker
+# 개념 인벤토리
 
-| Concept | Attempts | Correct | Last Tested | Status |
-|---------|----------|---------|-------------|--------|
+> 학습 자료에서 자동 추출된 전체 테스트 가능 개념 목록.
+> 커버리지 계산 및 퀴즈 대상 선정의 기준.
 
-### Error Notes
+## 섹션별 개념 수
 
-(added as concepts are missed)
+| 섹션 | 총 개념 | 테스트됨 | 미테스트 | 커버리지 |
+|------|---------|---------|---------|---------|
+| **합계** | **0** | **0** | **0** | **0%** |
+
+## {섹션명}
+
+- [ ] 개념1
+- [ ] 개념2
+- [x] 개념3 (→ concepts/{영역}.md)
+...
 ```
 
-## Important Reminders
+## 개념 파일 템플릿
 
-- ALWAYS read `references/quiz-rules.md` before creating questions
-- NEVER include hints in option labels or descriptions
-- NEVER use "(Recommended)" on any option
-- Randomize correct answer position
-- After grading, ALWAYS update both concept file AND dashboard
-- Communicate in user's language
+영역 최초 출제 시 생성:
+
+```markdown
+# {영역명} — 개념 추적
+
+| 개념 | 시도 | 정답 | 최종 테스트 | 상태 |
+|------|------|------|------------|------|
+
+### 오답 메모
+
+(오답 발생 시 추가)
+```
+
+## 중요 주의사항
+
+- **반드시** `references/quiz-rules.md`를 읽고 문제 작성
+- 선택지 라벨·설명에 **절대 힌트 포함 금지**
+- 어떤 옵션에도 **"(추천)" 표시 금지**
+- 정답 위치 **무작위 배치**
+- 채점 후 **반드시 개념 파일 + 인벤토리 + 대시보드 세 곳 모두 업데이트**
+- 사용자 언어로 소통
+- **4문제로 끝내지 않는다** — 모든 개념을 커버할 때까지 배치 반복
+- **배치 간 불필요한 확인 없이 자동 진행**
+- 인벤토리에서 누락된 개념이 없는지 항상 검증

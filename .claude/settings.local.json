@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell.exe:*)",
+      "Bash(cp /c/project/linux-master-tutor/.claude/skills/tutor/SKILL.md /c/project/linux-master-tutor/.agents/skills/tutor/SKILL.md && cp /c/project/linux-master-tutor/.claude/skills/tutor/references/quiz-rules.md /c/project/linux-master-tutor/.agents/skills/tutor/references/quiz-rules.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/SKILL.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/SKILL.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/templates.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/templates.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/quality-checklist.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/quality-checklist.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/codebase-workflow.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/codebase-workflow.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/codebase-templates.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/codebase-templates.md)"
+    ]
+  }
+}

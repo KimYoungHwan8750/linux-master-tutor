@@ -1,106 +1,106 @@
-# Quality Checklist — Self-Review
+# 품질 체크리스트 — 자체 검토
 
-Before reporting completion, verify every item in the relevant mode's section. Fix and re-verify if any check fails.
-
----
-
-## Document Mode
-
-### Source Traceability
-- [ ] Every source file's content verified (not filename-based assumption)
-- [ ] Source content mapping table built and verified in Phase D1
-- [ ] Every `source_pdf` frontmatter matches verified mapping
-- [ ] Non-academic files excluded and documented
-- [ ] Missing sources marked as `원문 미보유`
-- [ ] Non-core topic policy documented in MOC
-
-### Coverage
-- [ ] Every topic from Phase D2 checklist has a concept note
-- [ ] Every enumerated category member has its own note
-- [ ] No source topic missing or underrepresented
-
-### Tags
-- [ ] All tags: English kebab-case, from registry only
-- [ ] Tag Index includes hierarchy rules
-- [ ] Detail tags co-attached with parent domain tags
-
-### Structure & Formatting
-- [ ] Every note has YAML frontmatter: `source_pdf`, `part`, `keywords`
-- [ ] Every concept note has comparison table + exam/test patterns section
-- [ ] Process/flow topics have ASCII diagrams
-- [ ] Notes are concise (tables > prose)
-- [ ] Simplified statements include exception caveats
-
-### Dashboard
-- [ ] MOC: Topic Map + Practice Notes + Study Tools + Tag Index + Weak Areas + Non-core Policy
-- [ ] MOC links to every concept note AND practice note
-- [ ] Weak Areas link to `→ [[note]]` AND `→ [[Exam Traps]]`
-- [ ] Exam Traps exists with per-topic fold callouts and bidirectional links
-
-### Quick Reference
-- [ ] All key formulas and condition expressions included
-- [ ] Every section links to concept note via `→ [[Note]]`
-
-### Practice — Active Recall
-- [ ] Every topic folder has practice file (8+ questions)
-- [ ] All answers use `> [!answer]- 정답 보기` fold — never immediately visible
-- [ ] Key Patterns: `> [!hint]-` fold; Pattern Summary: `> [!summary]-` fold
-- [ ] `## Related Concepts` with backlinks in every practice file
-- [ ] Question type diversity: ≥60% recall, ≥20% application, ≥2 analysis per file
-
-### Interlinking
-- [ ] Every concept note has `## Related Notes`
-- [ ] `[[wiki-links]]` for all cross-references
-- [ ] Siblings reference each other; concept ↔ practice cross-linked
-- [ ] Exam Traps ↔ Concept notes bidirectionally linked
-
-### CWD Boundary
-- [ ] No source files accessed outside CWD
-- [ ] No absolute file paths in notes or frontmatter
-- [ ] External URLs accessed only via WebFetch, not file paths
+완료 보고 전 해당 모드 섹션의 모든 항목을 검증한다. 하나라도 실패하면 수정 후 재검증.
 
 ---
 
-## Codebase Mode
+## 문서 모드
 
-### Project Coverage
-- [ ] All major modules/domains identified and documented
-- [ ] Architecture pattern documented with ASCII diagram
-- [ ] Request flow traced end-to-end
-- [ ] Data flow documented (input → processing → persistence → output)
-- [ ] External dependencies and integrations listed
+### 소스 추적성
+- [ ] 모든 소스 파일의 내용을 검증 (파일명 기반 추측 아님)
+- [ ] Phase D1에서 소스 콘텐츠 매핑 테이블 구축 및 검증
+- [ ] 모든 `source_pdf` frontmatter가 검증된 매핑과 일치
+- [ ] 비학술 파일 제외 및 문서화
+- [ ] 미보유 소스는 `원문 미보유`로 표시
+- [ ] 비핵심 주제 정책 MOC에 문서화
 
-### Module Completeness
-- [ ] Every module has a dedicated note with YAML frontmatter (`module`, `path`, `keywords`)
-- [ ] Every module note includes: Purpose, Key Files, Public Interface, Internal Flow, Dependencies
-- [ ] Configuration section lists relevant env vars / config keys
-- [ ] Testing section includes commands and patterns
+### 커버리지
+- [ ] Phase D2 체크리스트의 모든 주제에 개념 노트 존재
+- [ ] 열거된 모든 카테고리 멤버에 전용 노트 존재
+- [ ] 소스 주제 중 누락되거나 과소 표현된 것 없음
 
-### Tags
-- [ ] All tags: English kebab-case, from registry only
-- [ ] Tag Index in MOC with hierarchy rules
-- [ ] Tags cover: `#arch-*`, `#module-*`, `#pattern-*`, `#api-*`
+### 태그
+- [ ] 모든 태그: 영문 케밥 케이스, 레지스트리에 등록된 것만
+- [ ] 태그 인덱스에 계층 규칙 포함
+- [ ] 세부 태그에 상위 도메인 태그 함께 부착
 
-### Dashboard
-- [ ] MOC: Architecture Overview + Module Map + API Surface + Getting Started + Tag Index + Onboarding Path
-- [ ] MOC links to every module note and exercise file
-- [ ] Quick Reference: key commands, env setup, file locations, debugging tips
-- [ ] Getting Started section is actionable (copy-paste commands)
+### 구조 및 서식
+- [ ] 모든 노트에 YAML frontmatter: `source_pdf`, `part`, `keywords`
+- [ ] 모든 개념 노트에 비교표 + 시험 빈출 패턴 섹션
+- [ ] 프로세스/흐름 주제에 ASCII 다이어그램
+- [ ] 노트 간결 (표 > 산문)
+- [ ] 단순화된 서술에 예외 주의사항 포함
 
-### Onboarding Exercises
-- [ ] Minimum 5 exercises per major module
-- [ ] Exercise types: code reading (trace), configuration, debugging, extension
-- [ ] All answers use `> [!answer]- 정답 보기` fold callout
-- [ ] Exercises reference relevant module notes via `[[wiki-links]]`
+### 대시보드
+- [ ] MOC: 주제 맵 + 연습 노트 + 학습 도구 + 태그 인덱스 + 취약 영역 + 비핵심 정책
+- [ ] MOC에서 모든 개념 노트 및 연습 노트 링크
+- [ ] 취약 영역에 `→ [[노트]]` 및 `→ [[Exam Traps]]` 링크
+- [ ] 시험 함정 노트에 주제별 접기 콜아웃 + 양방향 링크
 
-### Interlinking
-- [ ] Every module note has `## Related Notes`
-- [ ] `[[wiki-links]]` for all cross-references
-- [ ] Dependent modules cross-linked bidirectionally
-- [ ] Architecture notes reference specific module implementations
-- [ ] Exercises link back to the modules they cover
+### 빠른 참조
+- [ ] 모든 핵심 공식 및 조건식 포함
+- [ ] 모든 섹션에서 `→ [[노트]]` 링크로 개념 노트 연결
 
-### CWD Boundary
-- [ ] No references to files outside the project directory
-- [ ] All file paths in notes are relative to project root
-- [ ] No hardcoded absolute paths
+### 연습 — 능동적 회상
+- [ ] 모든 주제 폴더에 연습 파일 (8문제 이상)
+- [ ] 모든 답안이 `> [!answer]- 정답 보기` 접기 사용 — 바로 보이면 안 됨
+- [ ] 핵심 패턴: `> [!hint]-` 접기; 패턴 요약: `> [!summary]-` 접기
+- [ ] 모든 연습 파일에 `## 관련 개념`과 백링크
+- [ ] 문제 유형 다양성: ≥60% recall, ≥20% application, ≥2 analysis (파일당)
+
+### 상호 링크
+- [ ] 모든 개념 노트에 `## 관련 노트`
+- [ ] 모든 교차 참조에 `[[wiki-links]]`
+- [ ] 형제 노트 상호 참조; 개념 ↔ 연습 교차 링크
+- [ ] 시험 함정 ↔ 개념 노트 양방향 링크
+
+### CWD 경계
+- [ ] CWD 외부 소스 파일 접근 없음
+- [ ] 노트나 frontmatter에 절대 파일 경로 없음
+- [ ] 외부 URL은 WebFetch로만 접근, 파일 경로 사용 금지
+
+---
+
+## 코드베이스 모드
+
+### 프로젝트 커버리지
+- [ ] 모든 주요 모듈/도메인 식별 및 문서화
+- [ ] 아키텍처 패턴 ASCII 다이어그램과 함께 문서화
+- [ ] 요청 흐름 엔드-투-엔드 추적
+- [ ] 데이터 흐름 문서화 (입력 → 처리 → 저장 → 출력)
+- [ ] 외부 의존성 및 통합 목록화
+
+### 모듈 완전성
+- [ ] 모든 모듈에 YAML frontmatter(`module`, `path`, `keywords`) 포함 전용 노트
+- [ ] 모든 모듈 노트에: 목적, 핵심 파일, 공개 인터페이스, 내부 흐름, 의존성
+- [ ] 설정 섹션에 관련 환경 변수/설정 키
+- [ ] 테스트 섹션에 명령어 및 패턴
+
+### 태그
+- [ ] 모든 태그: 영문 케밥 케이스, 레지스트리에 등록된 것만
+- [ ] MOC에 태그 인덱스와 계층 규칙
+- [ ] 태그 범위: `#arch-*`, `#module-*`, `#pattern-*`, `#api-*`
+
+### 대시보드
+- [ ] MOC: 아키텍처 개요 + 모듈 맵 + API 서피스 + 시작 가이드 + 태그 인덱스 + 온보딩 경로
+- [ ] MOC에서 모든 모듈 노트 및 연습 파일 링크
+- [ ] 빠른 참조: 핵심 명령어, 환경 설정, 파일 위치, 디버깅 팁
+- [ ] 시작 가이드 섹션이 실행 가능 (복사-붙여넣기 가능한 명령어)
+
+### 온보딩 연습
+- [ ] 주요 모듈당 최소 5개 연습
+- [ ] 연습 유형: 코드 읽기(추적), 설정, 디버깅, 확장
+- [ ] 모든 답안이 `> [!answer]- 정답 보기` 접기 콜아웃
+- [ ] 연습에서 관련 모듈 노트 `[[wiki-links]]` 참조
+
+### 상호 링크
+- [ ] 모든 모듈 노트에 `## 관련 노트`
+- [ ] 모든 교차 참조에 `[[wiki-links]]`
+- [ ] 의존 모듈 간 양방향 교차 링크
+- [ ] 아키텍처 노트에서 구체적 모듈 구현 참조
+- [ ] 연습에서 다루는 모듈 역링크
+
+### CWD 경계
+- [ ] 프로젝트 디렉토리 외부 파일 참조 없음
+- [ ] 노트 내 모든 파일 경로가 프로젝트 루트 기준 상대 경로
+- [ ] 하드코딩된 절대 경로 없음

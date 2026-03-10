@@ -1,96 +1,96 @@
-# Codebase Mode — Onboarding Vault Workflow
+# 코드베이스 모드 — 온보딩 볼트 워크플로우
 
-> Generates a StudyVault that helps new developers understand and navigate a source code project.
-> All scanning and output MUST stay within CWD.
+> 소스 코드 프로젝트를 분석하여 신규 개발자의 이해와 탐색을 돕는 StudyVault를 생성한다.
+> 모든 스캔과 출력은 CWD 내에서만 수행.
 
-## Phase C1: Project Exploration
+## Phase C1: 프로젝트 탐색
 
-1. **Scan project structure**: `Glob` for source files, config files, test files. Build a file tree.
-2. **Identify tech stack**: Detect languages, frameworks, build tools, package managers from config files.
-3. **Read key files**: README, CONTRIBUTING, entry points (`main.*`, `index.*`, `app.*`), config files.
-4. **Map project layout**: Record directory purposes (e.g., `src/`, `test/`, `config/`, `scripts/`).
-5. **Present findings** to user for confirmation before proceeding.
+1. **프로젝트 구조 스캔**: `Glob`으로 소스 파일, 설정 파일, 테스트 파일 탐색. 파일 트리 구축.
+2. **기술 스택 식별**: 설정 파일에서 언어, 프레임워크, 빌드 도구, 패키지 매니저 감지.
+3. **핵심 파일 읽기**: README, CONTRIBUTING, 엔트리 포인트(`main.*`, `index.*`, `app.*`), 설정 파일.
+4. **프로젝트 레이아웃 매핑**: 디렉토리 목적 기록 (예: `src/`, `test/`, `config/`, `scripts/`).
+5. **결과를 사용자에게 제시**하여 확인 후 진행.
 
-## Phase C2: Architecture Analysis
+## Phase C2: 아키텍처 분석
 
-1. **Identify architectural patterns**: layered, hexagonal, microservice, monolith, serverless, etc.
-2. **Map module boundaries**: Which directories/packages form distinct modules or domains?
-3. **Trace request flow**: For a typical request (HTTP, event, CLI), trace the path through the code.
-4. **Identify key abstractions**: Interfaces, base classes, shared utilities, middleware, interceptors.
-5. **Map dependencies**: Internal module dependencies + external service integrations.
-6. **Document data flow**: How data enters, transforms, persists, and exits the system.
-7. **Build architecture summary**: Create a concise diagram (ASCII) + description for the vault.
+1. **아키텍처 패턴 식별**: 레이어드, 헥사고날, 마이크로서비스, 모놀리스, 서버리스 등.
+2. **모듈 경계 매핑**: 어떤 디렉토리/패키지가 독립적 모듈이나 도메인을 형성하는가?
+3. **요청 흐름 추적**: 전형적 요청(HTTP, 이벤트, CLI)이 코드를 통과하는 경로 추적.
+4. **핵심 추상화 식별**: 인터페이스, 베이스 클래스, 공유 유틸리티, 미들웨어, 인터셉터.
+5. **의존성 매핑**: 내부 모듈 의존성 + 외부 서비스 통합.
+6. **데이터 흐름 문서화**: 데이터가 시스템에 어떻게 들어오고, 변환되고, 저장되고, 나가는지.
+7. **아키텍처 요약 구축**: 간결한 다이어그램(ASCII) + 설명 작성.
 
-## Phase C3: Tag Standard
+## Phase C3: 태그 표준
 
-Define tag vocabulary before creating notes:
-- **Format**: English, lowercase, kebab-case
-- **Categories**: `#arch-*` (architecture), `#module-*` (modules), `#pattern-*` (patterns), `#config-*` (config), `#api-*` (API), `#test-*` (testing)
-- **Registry**: Only registered tags allowed. Present registry to user for approval.
+노트 작성 전 태그 어휘 정의:
+- **형식**: 영문, 소문자, 케밥 케이스
+- **카테고리**: `#arch-*` (아키텍처), `#module-*` (모듈), `#pattern-*` (패턴), `#config-*` (설정), `#api-*` (API), `#test-*` (테스팅)
+- **레지스트리**: 등록된 태그만 사용 가능. 레지스트리를 사용자에게 승인받기.
 
-## Phase C4: Vault Structure
+## Phase C4: 볼트 구조
 
-Create `StudyVault/` per [codebase-templates.md](codebase-templates.md) folder structure:
-- `00-Dashboard/` — MOC, Quick Reference, Getting Started
-- `01-Architecture/` — System overview, request flow, data flow
-- `02-XX/` through `NN-XX/` — One folder per module/domain
-- `NN+1-DevOps/` — Build, deploy, CI/CD, environment config
-- `NN+2-Exercises/` — Onboarding exercises
+[codebase-templates.md](codebase-templates.md) 폴더 구조에 따라 `StudyVault/` 생성:
+- `00-Dashboard/` — MOC, 빠른 참조, 시작 가이드
+- `01-Architecture/` — 시스템 개요, 요청 흐름, 데이터 흐름
+- `02-XX/` ~ `NN-XX/` — 모듈/도메인별 1개 폴더
+- `NN+1-DevOps/` — 빌드, 배포, CI/CD, 환경 설정
+- `NN+2-Exercises/` — 온보딩 연습
 
-## Phase C5: Dashboard Creation
+## Phase C5: 대시보드 생성
 
-Create `00-Dashboard/` with:
+`00-Dashboard/` 생성:
 
-### MOC (Map of Content)
-- **Architecture Overview**: Link to architecture notes
-- **Module Map**: Table of all modules with purpose + links
-- **API Surface**: Summary of endpoints/commands/events
-- **Getting Started**: Setup instructions, dev workflow, key commands
-- **Tag Index**: Tag registry with hierarchy rules
-- **Onboarding Path**: Recommended reading order for new developers
+### MOC (콘텐츠 맵)
+- **아키텍처 개요**: 아키텍처 노트 링크
+- **모듈 맵**: 모든 모듈의 목적 + 링크 테이블
+- **API 서피스**: 엔드포인트/명령어/이벤트 요약
+- **시작 가이드**: 설정 안내, 개발 워크플로우, 핵심 명령어
+- **태그 인덱스**: 태그 레지스트리 + 계층 규칙
+- **온보딩 경로**: 신규 개발자 추천 읽기 순서
 
-### Quick Reference
-- Key commands (build, test, deploy, lint)
-- Environment setup steps
-- Common debugging tips
-- Important file locations
+### 빠른 참조
+- 핵심 명령어 (빌드, 테스트, 배포, 린트)
+- 환경 설정 단계
+- 흔한 디버깅 팁
+- 주요 파일 위치
 
-## Phase C6: Module Notes
+## Phase C6: 모듈 노트
 
-One note per module/domain. Per [codebase-templates.md](codebase-templates.md). Key rules:
+모듈/도메인별 1개 노트. [codebase-templates.md](codebase-templates.md)에 따라 작성. 핵심 규칙:
 
-- YAML frontmatter: `module`, `path`, `keywords` (MANDATORY)
-- **Purpose**: What this module does (1-3 sentences)
-- **Key Files**: Table of important files with descriptions
-- **Public Interface**: Exported functions/classes/endpoints
-- **Internal Flow**: How data moves through this module (ASCII diagram)
-- **Dependencies**: What this module depends on + what depends on it
-- **Configuration**: Relevant env vars, config keys
-- **Testing**: How to run tests for this module, test patterns used
-- **Related Notes**: Links to related modules and architecture notes
+- YAML frontmatter: `module`, `path`, `keywords` (필수)
+- **목적**: 이 모듈이 하는 일 (1~3문장)
+- **핵심 파일**: 주요 파일과 설명 테이블
+- **공개 인터페이스**: 내보내는 함수/클래스/엔드포인트
+- **내부 흐름**: 모듈 내 데이터 이동 (ASCII 다이어그램)
+- **의존성**: 이 모듈이 의존하는 것 + 이 모듈에 의존하는 것
+- **설정**: 관련 환경 변수, 설정 키
+- **테스트**: 이 모듈의 테스트 실행법, 테스트 패턴
+- **관련 노트**: 관련 모듈 및 아키텍처 노트 링크
 
-For API-heavy modules, create separate API notes per [codebase-templates.md](codebase-templates.md).
+API 중심 모듈은 [codebase-templates.md](codebase-templates.md)에 따라 별도 API 노트 작성.
 
-## Phase C7: Onboarding Exercises
+## Phase C7: 온보딩 연습
 
-Create exercises that guide new developers through the codebase. Per [codebase-templates.md](codebase-templates.md).
+신규 개발자가 코드베이스를 탐색하도록 안내하는 연습. [codebase-templates.md](codebase-templates.md)에 따라 작성.
 
-- **Code Reading**: "Trace what happens when X occurs" — answer in fold callout
-- **Configuration**: "How would you change Y?" — answer with file paths + snippets
-- **Debugging**: "Where would you look if Z breaks?" — answer with investigation steps
-- **Extension**: "How would you add feature W?" — answer with architectural approach
-- Minimum 5 exercises per major module
-- All answers use `> [!answer]- <label>` fold callout (localize label to team language, e.g., "정답 보기" for Korean, "View Answer" for English)
+- **코드 읽기**: "X가 발생할 때 무슨 일이 일어나는지 추적하라" — 답안 접기 콜아웃
+- **설정**: "Y를 변경하려면?" — 파일 경로 + 코드 스니펫으로 답
+- **디버깅**: "Z가 고장나면 어디를 봐야 하나?" — 조사 단계로 답
+- **확장**: "기능 W를 추가하려면?" — 아키텍처 접근법으로 답
+- 주요 모듈당 최소 5개 연습
+- 모든 답안은 `> [!answer]- 정답 보기` 접기 콜아웃
 
-## Phase C8: Interlinking
+## Phase C8: 상호 링크
 
-1. `## Related Notes` on every module note
-2. MOC links to every module note + exercise file
-3. Cross-link modules that depend on each other
-4. Architecture notes reference specific module implementations
-5. Exercises reference the modules they cover
-6. Quick Reference links to relevant module notes
+1. 모든 모듈 노트에 `## 관련 노트`
+2. MOC에서 모든 모듈 노트 + 연습 파일 링크
+3. 상호 의존 모듈 교차 링크
+4. 아키텍처 노트에서 구체적 모듈 구현 참조
+5. 연습에서 다루는 모듈 참조
+6. 빠른 참조에서 관련 모듈 노트 링크
 
-## Phase C9: Self-Review (MANDATORY)
+## Phase C9: 자체 검토 (필수)
 
-Verify against [quality-checklist.md](quality-checklist.md) **Codebase Mode** section. Fix and re-verify until all checks pass.
+[quality-checklist.md](quality-checklist.md) **코드베이스 모드** 섹션 기준으로 검증. 모든 항목 통과할 때까지 수정 및 재검증.
