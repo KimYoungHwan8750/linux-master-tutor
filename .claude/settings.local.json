@@ -3,7 +3,8 @@
     "allow": [
       "Bash(powershell.exe:*)",
       "Bash(cp /c/project/linux-master-tutor/.claude/skills/tutor/SKILL.md /c/project/linux-master-tutor/.agents/skills/tutor/SKILL.md && cp /c/project/linux-master-tutor/.claude/skills/tutor/references/quiz-rules.md /c/project/linux-master-tutor/.agents/skills/tutor/references/quiz-rules.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/SKILL.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/SKILL.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/templates.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/templates.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/quality-checklist.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/quality-checklist.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/codebase-workflow.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/codebase-workflow.md && cp /c/project/linux-master-tutor/.claude/skills/tutor-setup/references/codebase-templates.md /c/project/linux-master-tutor/.agents/skills/tutor-setup/references/codebase-templates.md)",
-      "Bash(ls -d /c/project/linux-master-tutor/StudyVault/*/)"
+      "Bash(ls -d /c/project/linux-master-tutor/StudyVault/*/)",
+      "Bash(cp \"C:/project/linux-master-tutor/.claude/skills/tutor/SKILL.md\" \"C:/project/linux-master-tutor/.agents/skills/tutor/SKILL.md\" 2>/dev/null; cp \"C:/project/linux-master-tutor/.claude/skills/tutor/references/quiz-rules.md\" \"C:/project/linux-master-tutor/.agents/skills/tutor/references/quiz-rules.md\" 2>/dev/null; echo \"done\")"
     ]
   }
 }

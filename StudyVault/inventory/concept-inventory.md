@@ -7,15 +7,15 @@
 
 | 섹션 | 총 개념 | 테스트됨 | 미테스트 | 커버리지 |
 |------|---------|---------|---------|---------|
-| 01-파일시스템 | 36 | 0 | 36 | 0% |
-| 02-셸 | 27 | 0 | 27 | 0% |
-| 03-프로세스관리 | 19 | 0 | 19 | 0% |
+| 01-파일시스템 | 36 | 36 | 0 | 100% |
+| 02-셸 | 27 | 27 | 0 | 100% |
+| 03-프로세스관리 | 19 | 19 | 0 | 100% |
 | 04-에디터 | 13 | 0 | 13 | 0% |
 | 05-소프트웨어설치 | 16 | 0 | 16 | 0% |
 | 06-장치설정 | 13 | 0 | 13 | 0% |
 | 07-X윈도우 | 17 | 0 | 17 | 0% |
 | 08-인터넷활용 | 60 | 0 | 60 | 0% |
-| **합계** | **201** | **0** | **201** | **0%** |
+| **합계** | **201** | **82** | **119** | **41%** |
 
 ---
 
@@ -23,48 +23,48 @@
 
 ### 파일 권한과 소유권
 
-- [ ] ls -l 파일 유형 식별자 7종 (-, d, l, b, c, p, s)
-- [ ] 파일 권한 rwx 숫자 모드 (r=4, w=2, x=1)
-- [ ] chmod 기호 모드 (u/g/o/a ±= rwx)
-- [ ] chown 명령어 (소유자 변경)
-- [ ] chgrp 명령어 (그룹 변경)
-- [ ] umask 계산법 (파일 666, 디렉토리 777에서 차감)
-- [ ] SetUID (4000, 실행 시 소유자 권한, passwd 예시)
-- [ ] SetGID (2000, 실행 시 그룹 권한)
-- [ ] Sticky Bit (1000, 삭제 제한, /tmp 예시)
-- [ ] 특수 권한 표기 (소문자 s/t vs 대문자 S/T)
+- [x] ls -l 파일 유형 식별자 7종 (-, d, l, b, c, p, s)
+- [x] 파일 권한 rwx 숫자 모드 (r=4, w=2, x=1)
+- [x] chmod 기호 모드 (u/g/o/a ±= rwx)
+- [x] chown 명령어 (소유자 변경)
+- [x] chgrp 명령어 (그룹 변경)
+- [x] umask 계산법 (파일 666, 디렉토리 777에서 차감)
+- [x] SetUID (4000, 실행 시 소유자 권한, passwd 예시)
+- [x] SetGID (2000, 실행 시 그룹 권한)
+- [x] Sticky Bit (1000, 삭제 제한, /tmp 예시)
+- [x] 특수 권한 표기 (소문자 s/t vs 대문자 S/T)
 
 ### 디스크 쿼타와 파일시스템
 
-- [ ] 쿼타 개념 (하드 제한 vs 소프트 제한 vs 유예 기간)
-- [ ] quotacheck 명령어
-- [ ] quotaon / quotaoff 명령어
-- [ ] edquota 명령어
-- [ ] repquota 명령어
-- [ ] ext2 / ext3 / ext4 파일시스템 비교
-- [ ] XFS 파일시스템
-- [ ] NFS (네트워크 파일 시스템)
-- [ ] SMB / CIFS
-- [ ] /etc/fstab 6개 필드 구조
-- [ ] UUID와 blkid 명령어
-- [ ] inode 개념
-- [ ] 파일시스템 구조 (슈퍼블록, 블록 비트맵, inode 테이블 등)
-- [ ] 하드링크 vs 심볼릭 링크
-- [ ] ln / ln -s 명령어
+- [x] 쿼타 개념 (하드 제한 vs 소프트 제한 vs 유예 기간)
+- [x] quotacheck 명령어
+- [x] quotaon / quotaoff 명령어
+- [x] edquota 명령어
+- [x] repquota 명령어
+- [x] ext2 / ext3 / ext4 파일시스템 비교
+- [x] XFS 파일시스템
+- [x] NFS (네트워크 파일 시스템)
+- [x] SMB / CIFS
+- [x] /etc/fstab 6개 필드 구조
+- [x] UUID와 blkid 명령어
+- [x] inode 개념
+- [x] 파일시스템 구조 (슈퍼블록, 블록 비트맵, inode 테이블 등)
+- [x] 하드링크 vs 심볼릭 링크
+- [x] ln / ln -s 명령어
 
 ### 파일시스템 관리 명령어
 
-- [ ] mount / umount 명령어
-- [ ] mount -t 옵션 (파일시스템 유형 지정)
-- [ ] mount -o 옵션 (ro, rw, noexec 등)
-- [ ] fdisk 명령어 (파티션 관리)
-- [ ] fdisk 내부 명령 (p, n, d, t, w, q)
-- [ ] mkfs / mke2fs 명령어
-- [ ] fsck / e2fsck 명령어
-- [ ] du 명령어 (디스크 사용량, -s, -h)
-- [ ] df 명령어 (디스크 여유공간, -h, -i)
-- [ ] dumpe2fs / tune2fs 명령어
-- [ ] xfs_info / xfs_repair 명령어
+- [x] mount / umount 명령어
+- [x] mount -t 옵션 (파일시스템 유형 지정)
+- [x] mount -o 옵션 (ro, rw, noexec 등)
+- [x] fdisk 명령어 (파티션 관리)
+- [x] fdisk 내부 명령 (p, n, d, t, w, q)
+- [x] mkfs / mke2fs 명령어
+- [x] fsck / e2fsck 명령어
+- [x] du 명령어 (디스크 사용량, -s, -h)
+- [x] df 명령어 (디스크 여유공간, -h, -i)
+- [x] dumpe2fs / tune2fs 명령어
+- [x] xfs_info / xfs_repair 명령어
 
 ---
 
@@ -72,60 +72,60 @@
 
 ### 셸의 종류와 특징
 
-- [ ] 본셸 (sh) — Stephen Bourne, Bell Labs, 최초 유닉스 셸
-- [ ] 콘셸 (ksh) — David Korn, 본셸+C셸 결합
-- [ ] 배쉬셸 (bash) — GNU, POSIX 호환, Bourne Again Shell
-- [ ] 지셸 (zsh) — 강력한 히스토리/자동완성/플러그인
-- [ ] C셸 (csh) — Bill Joy, C 언어 문법, 히스토리/별칭 최초 도입
-- [ ] tc셸 (tcsh) — C셸 개선, 자동완성 추가
-- [ ] /etc/shells 파일 (사용 가능한 셸 목록)
-- [ ] chsh 명령어 (-s, -l 옵션)
-- [ ] usermod -s (셸 변경)
-- [ ] echo $SHELL (현재 셸 확인)
+- [x] 본셸 (sh) — Stephen Bourne, Bell Labs, 최초 유닉스 셸
+- [x] 콘셸 (ksh) — David Korn, 본셸+C셸 결합
+- [x] 배쉬셸 (bash) — GNU, POSIX 호환, Bourne Again Shell
+- [x] 지셸 (zsh) — 강력한 히스토리/자동완성/플러그인
+- [x] C셸 (csh) — Bill Joy, C 언어 문법, 히스토리/별칭 최초 도입
+- [x] tc셸 (tcsh) — C셸 개선, 자동완성 추가
+- [x] /etc/shells 파일 (사용 가능한 셸 목록)
+- [x] chsh 명령어 (-s, -l 옵션)
+- [x] usermod -s (셸 변경)
+- [x] echo $SHELL (현재 셸 확인)
 
 ### 셸 환경설정
 
-- [ ] env 명령어 (환경변수 목록)
-- [ ] set 명령어 (셸+환경 변수 모두)
-- [ ] export 명령어 (셸→환경변수 전환)
-- [ ] printenv 명령어
-- [ ] 셸 변수 vs 환경변수 구분
-- [ ] 주요 환경변수 (PATH, HOME, SHELL, USER, HOSTNAME, LANG 등)
-- [ ] PS1 특수문자 (\u, \h, \w, \$)
-- [ ] PS2 보조 프롬프트
-- [ ] /etc/profile (시스템 전체, 로그인 시)
-- [ ] /etc/bashrc (시스템 전체, bash 실행 시)
-- [ ] ~/.bash_profile (개인, 로그인 시)
-- [ ] ~/.bashrc (개인, bash 실행 시)
-- [ ] 로그인 셸 vs 비로그인 셸 (읽는 파일 차이)
-- [ ] 설정 파일 적용 순서 (/etc/profile → ~/.bash_profile → ~/.bashrc → /etc/bashrc)
-- [ ] history 명령어 (!!, !n, -c, -w)
-- [ ] alias / unalias 명령어
-- [ ] /etc/passwd 필드 구조 (7개 필드)
+- [x] env 명령어 (환경변수 목록)
+- [x] set 명령어 (셸+환경 변수 모두)
+- [x] export 명령어 (셸→환경변수 전환)
+- [x] printenv 명령어
+- [x] 셸 변수 vs 환경변수 구분
+- [x] 주요 환경변수 (PATH, HOME, SHELL, USER, HOSTNAME, LANG 등)
+- [x] PS1 특수문자 (\u, \h, \w, \$)
+- [x] PS2 보조 프롬프트
+- [x] /etc/profile (시스템 전체, 로그인 시)
+- [x] /etc/bashrc (시스템 전체, bash 실행 시)
+- [x] ~/.bash_profile (개인, 로그인 시)
+- [x] ~/.bashrc (개인, bash 실행 시)
+- [x] 로그인 셸 vs 비로그인 셸 (읽는 파일 차이)
+- [x] 설정 파일 적용 순서 (/etc/profile → ~/.bash_profile → ~/.bashrc → /etc/bashrc)
+- [x] history 명령어 (!!, !n, -c, -w)
+- [x] alias / unalias 명령어
+- [x] /etc/passwd 필드 구조 (7개 필드)
 
 ---
 
 ## 03-프로세스관리
 
-- [ ] 프로세스 개념 (PID, PPID)
-- [ ] 데몬(Daemon) 프로세스
-- [ ] ps 명령어와 주요 옵션 (aux vs -ef)
-- [ ] top 명령어
-- [ ] kill 명령어
-- [ ] 주요 시그널 (SIGHUP=1, SIGINT=2, SIGKILL=9, SIGTERM=15, SIGTSTP=20)
-- [ ] killall / pkill 명령어
-- [ ] nice 명령어 (NI값 설정)
-- [ ] renice 명령어 (NI값 변경)
-- [ ] NI값 범위 (-20~19, 일반 사용자 0~19)
-- [ ] nohup 명령어
-- [ ] & (백그라운드 실행)
-- [ ] jobs / fg / bg 명령어
-- [ ] cron 데몬과 crontab 명령어 (-e, -l, -r, -u)
-- [ ] crontab 필드 형식 (분 시 일 월 요일 명령)
-- [ ] at 명령어
-- [ ] /etc/cron.allow, /etc/cron.deny
-- [ ] 포그라운드 vs 백그라운드 프로세스
-- [ ] 좀비 프로세스 / 고아 프로세스
+- [x] 프로세스 개념 (PID, PPID)
+- [x] 데몬(Daemon) 프로세스
+- [x] ps 명령어와 주요 옵션 (aux vs -ef)
+- [x] top 명령어
+- [x] kill 명령어
+- [x] 주요 시그널 (SIGHUP=1, SIGINT=2, SIGKILL=9, SIGTERM=15, SIGTSTP=20)
+- [x] killall / pkill 명령어
+- [x] nice 명령어 (NI값 설정)
+- [x] renice 명령어 (NI값 변경)
+- [x] NI값 범위 (-20~19, 일반 사용자 0~19)
+- [x] nohup 명령어
+- [x] & (백그라운드 실행)
+- [x] jobs / fg / bg 명령어
+- [x] cron 데몬과 crontab 명령어 (-e, -l, -r, -u)
+- [x] crontab 필드 형식 (분 시 일 월 요일 명령)
+- [x] at 명령어
+- [x] /etc/cron.allow, /etc/cron.deny
+- [x] 포그라운드 vs 백그라운드 프로세스
+- [x] 좀비 프로세스 / 고아 프로세스
 
 ---
 
