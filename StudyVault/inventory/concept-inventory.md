@@ -10,12 +10,12 @@
 | 01-파일시스템 | 36 | 36 | 0 | 100% |
 | 02-셸 | 27 | 27 | 0 | 100% |
 | 03-프로세스관리 | 19 | 19 | 0 | 100% |
-| 04-에디터 | 13 | 0 | 13 | 0% |
-| 05-소프트웨어설치 | 16 | 0 | 16 | 0% |
-| 06-장치설정 | 13 | 0 | 13 | 0% |
-| 07-X윈도우 | 17 | 0 | 17 | 0% |
-| 08-인터넷활용 | 60 | 0 | 60 | 0% |
-| **합계** | **201** | **82** | **119** | **41%** |
+| 04-에디터 | 13 | 7 | 6 | 54% |
+| 05-소프트웨어설치 | 16 | 16 | 0 | 100% |
+| 06-장치설정 | 13 | 8 | 5 | 62% |
+| 07-X윈도우 | 17 | 9 | 8 | 53% |
+| 08-인터넷활용 | 60 | 40 | 20 | 67% |
+| **합계** | **201** | **162** | **39** | **81%** |
 
 ---
 
@@ -131,56 +131,56 @@
 
 ## 04-에디터
 
-- [ ] vi 3가지 모드 (명령, 입력, 라인명령)
-- [ ] vi 입력 모드 전환 (i, a, o, I, A, O)
+- [x] vi 3가지 모드 (명령, 입력, 라인명령) (→ concepts/에디터.md)
+- [x] vi 입력 모드 전환 (i, a, o, I, A, O) (→ concepts/에디터.md)
 - [ ] vi 커서 이동 (h, j, k, l)
-- [ ] vi 삭제 명령 (x, dd, dw, D)
+- [x] vi 삭제 명령 (x, dd, dw, D) (→ concepts/에디터.md)
 - [ ] vi 복사/붙여넣기 (yy, p, P)
 - [ ] vi 되돌리기 (u, Ctrl+r)
 - [ ] vi 검색 (/, ?, n, N)
-- [ ] vi 치환 (:s, :%s)
-- [ ] vi 저장/종료 (:w, :q, :wq, :q!, ZZ)
+- [x] vi 치환 (:s, :%s) (→ concepts/에디터.md)
+- [x] vi 저장/종료 (:w, :q, :wq, :q!, ZZ) (→ concepts/에디터.md)
 - [ ] vi set 명령 (:set nu, :set ai 등)
 - [ ] vi 라인 이동 (G, gg, :n)
-- [ ] emacs 편집기 (특징, 주요 키바인딩)
-- [ ] nano / pico 편집기
+- [x] emacs 편집기 (특징, 주요 키바인딩) (→ concepts/에디터.md)
+- [x] nano / pico 편집기 (→ concepts/에디터.md)
 
 ---
 
 ## 05-소프트웨어설치
 
-- [ ] RPM 패키지 관리 (설치 -i/-ivh, 제거 -e, 업그레이드 -U/-F)
-- [ ] rpm 질의 옵션 (-q, -qa, -qi, -ql, -qf)
-- [ ] rpm 검증 (-V)
-- [ ] YUM (yum install/remove/update)
-- [ ] yum list / info / search
-- [ ] yum 설정 파일 (/etc/yum.conf, /etc/yum.repos.d/)
-- [ ] DNF (YUM 후속)
-- [ ] dpkg 패키지 관리 (-i, -r, -P, -l, -L, -s)
-- [ ] APT (apt-get install/remove/update/upgrade)
-- [ ] apt-cache search / show
-- [ ] /etc/apt/sources.list
-- [ ] zypper (SUSE)
-- [ ] 소스 코드 설치 3단계 (configure → make → make install)
-- [ ] tar 명령어 옵션 (-c, -x, -t, -f, -v, -z, -j, -J)
-- [ ] gzip / bzip2 / xz 압축 비교
-- [ ] RPM vs DPKG, YUM vs APT 비교
+- [x] RPM 패키지 관리 (설치 -i/-ivh, 제거 -e, 업그레이드 -U/-F) (→ concepts/소프트웨어설치.md)
+- [x] rpm 질의 옵션 (-q, -qa, -qi, -ql, -qf) (→ concepts/소프트웨어설치.md)
+- [x] rpm 검증 (-V) (→ concepts/소프트웨어설치.md)
+- [x] YUM (yum install/remove/update) (→ concepts/소프트웨어설치.md)
+- [x] yum list / info / search (→ concepts/소프트웨어설치.md)
+- [x] yum 설정 파일 (/etc/yum.conf, /etc/yum.repos.d/) (→ concepts/소프트웨어설치.md)
+- [x] DNF (YUM 후속) (→ concepts/소프트웨어설치.md)
+- [x] dpkg 패키지 관리 (-i, -r, -P, -l, -L, -s) (→ concepts/소프트웨어설치.md)
+- [x] APT (apt-get install/remove/update/upgrade) (→ concepts/소프트웨어설치.md)
+- [x] apt-cache search / show (→ concepts/소프트웨어설치.md)
+- [x] /etc/apt/sources.list (→ concepts/소프트웨어설치.md)
+- [x] zypper (SUSE) (→ concepts/소프트웨어설치.md)
+- [x] 소스 코드 설치 3단계 (configure → make → make install) (→ concepts/소프트웨어설치.md)
+- [x] tar 명령어 옵션 (-c, -x, -t, -f, -v, -z, -j, -J) (→ concepts/소프트웨어설치.md)
+- [x] gzip / bzip2 / xz 압축 비교 (→ concepts/소프트웨어설치.md)
+- [x] RPM vs DPKG, YUM vs APT 비교 (→ concepts/소프트웨어설치.md)
 
 ---
 
 ## 06-장치설정
 
-- [ ] LPRng (BSD 인쇄, /etc/printcap)
-- [ ] CUPS (애플, HTTP/IPP, 포트 631)
+- [x] LPRng (BSD 인쇄, /etc/printcap) (→ concepts/장치설정.md)
+- [x] CUPS (애플, HTTP/IPP, 포트 631) (→ concepts/장치설정.md)
 - [ ] CUPS 설정 파일 (/etc/cups/cupsd.conf, printers.conf 등)
-- [ ] BSD 프린터 명령어 (lpr, lpq, lprm, lpc)
-- [ ] System V 프린터 명령어 (lp, lpstat, cancel)
+- [x] BSD 프린터 명령어 (lpr, lpq, lprm, lpc) (→ concepts/장치설정.md)
+- [x] System V 프린터 명령어 (lp, lpstat, cancel) (→ concepts/장치설정.md)
 - [ ] BSD vs System V 명령어 비교 (-P vs -d, -# vs -n)
-- [ ] OSS (유닉스 사운드, POSIX)
-- [ ] ALSA (리눅스 커널 사운드)
+- [x] OSS (유닉스 사운드, POSIX) (→ concepts/장치설정.md)
+- [x] ALSA (리눅스 커널 사운드) (→ concepts/장치설정.md)
 - [ ] alsactl / alsamixer 명령어
-- [ ] cdparanoia 명령어 (CD 오디오 추출)
-- [ ] SANE (스캐너 API, 백엔드/프론트엔드)
+- [x] cdparanoia 명령어 (CD 오디오 추출) (→ concepts/장치설정.md)
+- [x] SANE (스캐너 API, 백엔드/프론트엔드) (→ concepts/장치설정.md)
 - [ ] XSANE (SANE GUI 프론트엔드)
 - [ ] sane-find-scanner / scanimage / scanadf / xcam 명령어
 
@@ -189,22 +189,22 @@
 ## 07-X윈도우
 
 - [ ] X-Windows 기본 개념 (네트워크 기반, 클라이언트/서버, MIT)
-- [ ] X서버 vs X클라이언트 (일반 네트워크와 반대 구조)
-- [ ] X프로토콜 4가지 메시지 (Request, Reply, Error, Event)
+- [x] X서버 vs X클라이언트 (일반 네트워크와 반대 구조) (→ concepts/X윈도우.md)
+- [x] X프로토콜 4가지 메시지 (Request, Reply, Error, Event) (→ concepts/X윈도우.md)
 - [ ] Xlib / XCB / Xtoolkit 라이브러리
 - [ ] XFree86 (XF86Config) vs Xorg (xorg.conf)
 - [ ] xorg.conf 주요 섹션 (ServerLayout, Files, Module, InputDevice, Monitor, Device, Screen)
-- [ ] systemd target vs SysV runlevel 비교
+- [x] systemd target vs SysV runlevel 비교 (→ concepts/X윈도우.md)
 - [ ] graphical.target = runlevel 5, multi-user.target = runlevel 3
 - [ ] systemctl set-default / get-default / isolate
-- [ ] 윈도우 매니저 (Metacity, Mutter, Kwin, Xfwm, Openbox 등)
-- [ ] 데스크톱 환경 (KDE/Qt, GNOME/GTK+, LXDE, XFCE)
+- [x] 윈도우 매니저 (Metacity, Mutter, Kwin, Xfwm, Openbox 등) (→ concepts/X윈도우.md)
+- [x] 데스크톱 환경 (KDE/Qt, GNOME/GTK+, LXDE, XFCE) (→ concepts/X윈도우.md)
 - [ ] 추가 데스크톱 환경 (Cinnamon, MATE, Unity, Budgie)
-- [ ] 디스플레이 매니저 (XDM, GDM, KDM, SDDM, LightDM, LXDM)
-- [ ] xhost 명령어 (+, -, +IP, -IP)
-- [ ] xauth 명령어 (MIT-MAGIC-COOKIE, ~/.Xauthority)
+- [x] 디스플레이 매니저 (XDM, GDM, KDM, SDDM, LightDM, LXDM) (→ concepts/X윈도우.md)
+- [x] xhost 명령어 (+, -, +IP, -IP) (→ concepts/X윈도우.md)
+- [x] xauth 명령어 (MIT-MAGIC-COOKIE, ~/.Xauthority) (→ concepts/X윈도우.md)
 - [ ] xhost vs xauth 비교 (호스트 기반 vs 쿠키 기반)
-- [ ] DISPLAY 환경변수 형식 (IP:디스플레이번호.스크린번호)
+- [x] DISPLAY 환경변수 형식 (IP:디스플레이번호.스크린번호) (→ concepts/X윈도우.md)
 
 ---
 
@@ -212,46 +212,46 @@
 
 ### 네트워크 기초
 
-- [ ] LAN / MAN / WAN / SAN 비교
-- [ ] LAN 기술 (Ethernet, Token Ring, FDDI)
-- [ ] 토폴로지: 성형(Star) — 중앙 장치 고장 시 전체 마비
-- [ ] 토폴로지: 망형(Mesh) — 신뢰성 최고, 비용 높음
-- [ ] 토폴로지: 버스형(Bus) — 비용 저렴, 병목
-- [ ] 토폴로지: 링형(Ring) — 노드 장애 시 전체 영향
-- [ ] 토폴로지: 트리형(Tree) — 계층 구조
-- [ ] OSI 7계층 이름과 순서
-- [ ] 계층별 데이터 단위 (Bit, Frame, Packet, Segment, Data)
-- [ ] 계층별 주요 장비 (리피터, 허브, 브릿지, 스위치, 라우터, 게이트웨이)
-- [ ] IP / ICMP / IGMP 프로토콜
-- [ ] ARP (IP→MAC) vs RARP (MAC→IP)
-- [ ] TCP vs UDP 상세 비교
-- [ ] TCP 3-Way Handshake (SYN → SYN+ACK → ACK)
-- [ ] TCP 4-Way Handshake (FIN → ACK → FIN → ACK)
-- [ ] TCP 주요 상태 (LISTEN, ESTABLISHED, TIME_WAIT 등)
-- [ ] IPv4 클래스 A/B/C/D/E 범위
-- [ ] 특수 IP 주소 / 사설 IP 대역
-- [ ] IPv4(32bit) / IPv6(128bit) / MAC(48bit) 크기
-- [ ] 서브넷 마스크와 CIDR 표기법
-- [ ] 국제 기구 (ICANN, IEEE, ISO, IETF, W3C)
+- [x] LAN / MAN / WAN / SAN 비교 (→ concepts/인터넷활용.md)
+- [x] LAN 기술 (Ethernet, Token Ring, FDDI) (→ concepts/인터넷활용.md)
+- [x] 토폴로지: 성형(Star) — 중앙 장치 고장 시 전체 마비 (→ concepts/인터넷활용.md)
+- [x] 토폴로지: 망형(Mesh) — 신뢰성 최고, 비용 높음 (→ concepts/인터넷활용.md)
+- [x] 토폴로지: 버스형(Bus) — 비용 저렴, 병목 (→ concepts/인터넷활용.md)
+- [x] 토폴로지: 링형(Ring) — 노드 장애 시 전체 영향 (→ concepts/인터넷활용.md)
+- [x] 토폴로지: 트리형(Tree) — 계층 구조 (→ concepts/인터넷활용.md)
+- [x] OSI 7계층 이름과 순서 (→ concepts/인터넷활용.md)
+- [x] 계층별 데이터 단위 (Bit, Frame, Packet, Segment, Data) (→ concepts/인터넷활용.md)
+- [x] 계층별 주요 장비 (리피터, 허브, 브릿지, 스위치, 라우터, 게이트웨이) (→ concepts/인터넷활용.md)
+- [x] IP / ICMP / IGMP 프로토콜 (→ concepts/인터넷활용.md)
+- [x] ARP (IP→MAC) vs RARP (MAC→IP) (→ concepts/인터넷활용.md)
+- [x] TCP vs UDP 상세 비교 (→ concepts/인터넷활용.md)
+- [x] TCP 3-Way Handshake (SYN → SYN+ACK → ACK) (→ concepts/인터넷활용.md)
+- [x] TCP 4-Way Handshake (FIN → ACK → FIN → ACK) (→ concepts/인터넷활용.md)
+- [x] TCP 주요 상태 (LISTEN, ESTABLISHED, TIME_WAIT 등) (→ concepts/인터넷활용.md)
+- [x] IPv4 클래스 A/B/C/D/E 범위 (→ concepts/인터넷활용.md)
+- [x] 특수 IP 주소 / 사설 IP 대역 (→ concepts/인터넷활용.md)
+- [x] IPv4(32bit) / IPv6(128bit) / MAC(48bit) 크기 (→ concepts/인터넷활용.md)
+- [x] 서브넷 마스크와 CIDR 표기법 (→ concepts/인터넷활용.md)
+- [x] 국제 기구 (ICANN, IEEE, ISO, IETF, W3C) (→ concepts/인터넷활용.md)
 
 ### 네트워크 명령어와 서비스
 
-- [ ] 주요 서비스별 포트 번호 (FTP 21, SSH 22, Telnet 23, SMTP 25, DNS 53, HTTP 80, POP3 110, IMAP 143, HTTPS 443)
-- [ ] ifconfig 명령어 (인터페이스 설정/확인)
-- [ ] ip 명령어 (ip addr, ip link, ip route, ip neigh)
-- [ ] nslookup 명령어 (DNS 질의)
-- [ ] ping 명령어 (ICMP, -c, -i, -s 옵션)
-- [ ] traceroute 명령어 (경로 추적)
-- [ ] netstat 명령어 (-a, -n, -t, -u, -l, -p, -r)
-- [ ] ss 명령어 (netstat 대체)
-- [ ] route 명령어 (라우팅 테이블)
-- [ ] ethtool / mii-tool 명령어
-- [ ] arp 명령어 (ARP 테이블)
-- [ ] 레거시 vs 현대 네트워크 명령어 대응표
-- [ ] WWW (HTTP/HTTPS)
-- [ ] Gopher (미네소타 대학, 텍스트 기반)
-- [ ] 전자 메일 (SMTP 송신 / POP3 수신 다운로드 / IMAP 수신 서버 보관)
-- [ ] FTP / SFTP / FTPS
+- [x] 주요 서비스별 포트 번호 (FTP 21, SSH 22, Telnet 23, SMTP 25, DNS 53, HTTP 80, POP3 110, IMAP 143, HTTPS 443) (→ concepts/인터넷활용.md)
+- [x] ifconfig 명령어 (인터페이스 설정/확인) (→ concepts/인터넷활용.md)
+- [x] ip 명령어 (ip addr, ip link, ip route, ip neigh) (→ concepts/인터넷활용.md)
+- [x] nslookup 명령어 (DNS 질의) (→ concepts/인터넷활용.md)
+- [x] ping 명령어 (ICMP, -c, -i, -s 옵션) (→ concepts/인터넷활용.md)
+- [x] traceroute 명령어 (경로 추적) (→ concepts/인터넷활용.md)
+- [x] netstat 명령어 (-a, -n, -t, -u, -l, -p, -r) (→ concepts/인터넷활용.md)
+- [x] ss 명령어 (netstat 대체) (→ concepts/인터넷활용.md)
+- [x] route 명령어 (라우팅 테이블) (→ concepts/인터넷활용.md)
+- [x] ethtool / mii-tool 명령어 (→ concepts/인터넷활용.md)
+- [x] arp 명령어 (ARP 테이블) (→ concepts/인터넷활용.md)
+- [x] 레거시 vs 현대 네트워크 명령어 대응표 (→ concepts/인터넷활용.md)
+- [x] WWW (HTTP/HTTPS) (→ concepts/인터넷활용.md)
+- [x] Gopher (미네소타 대학, 텍스트 기반) (→ concepts/인터넷활용.md)
+- [x] 전자 메일 (SMTP 송신 / POP3 수신 다운로드 / IMAP 수신 서버 보관) (→ concepts/인터넷활용.md)
+- [x] FTP / SFTP / FTPS (→ concepts/인터넷활용.md)
 - [ ] Telnet vs SSH
 - [ ] IRC (실시간 채팅)
 - [ ] SAMBA (Windows-Linux 공유, SMB/CIFS)
@@ -262,19 +262,19 @@
 
 - [ ] RAID 0 (스트라이핑, 속도↑, 복구 불가)
 - [ ] RAID 1 (미러링, 2배 용량, 백업)
-- [ ] RAID 5 (스트라이핑+패리티, 최소 3개, 실무 다용)
+- [x] RAID 5 (스트라이핑+패리티, 최소 3개, 실무 다용) (→ concepts/인터넷활용.md)
 - [ ] RAID 6 / RAID 1+0
-- [ ] LVM 개념과 구조 (PV → VG → LV)
+- [x] LVM 개념과 구조 (PV → VG → LV) (→ concepts/인터넷활용.md)
 - [ ] LVM 구성 요소 (PV, VG, LV, PE)
 - [ ] LVM 명령어 (pvcreate/vgcreate/lvcreate, pvdisplay/vgdisplay/lvdisplay)
 - [ ] LVM 확장/축소 (lvextend/lvreduce/vgextend/vgreduce)
 - [ ] HPC 클러스터 (고성능 계산, 베어울프)
 - [ ] LVS 클러스터 (부하 분산, 로드밸런서)
 - [ ] HA 클러스터 (고가용성, IP 이주)
-- [ ] Xen (반가상화) vs KVM (전가상화)
+- [x] Xen (반가상화) vs KVM (전가상화) (→ concepts/인터넷활용.md)
 - [ ] VirtualBox (오라클, 독자적 가상 장치)
 - [ ] Docker (컨테이너 기반)
 - [ ] 전가상화 vs 반가상화 비교
 - [ ] 하이퍼바이저 Type 1 (베어메탈) vs Type 2 (호스트형)
-- [ ] IaaS / PaaS / SaaS
+- [x] IaaS / PaaS / SaaS (→ concepts/인터넷활용.md)
 - [ ] 하둡 (Hadoop, 자바, HDFS, MapReduce)
